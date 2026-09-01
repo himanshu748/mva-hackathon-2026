@@ -136,14 +136,14 @@ The rule is stated in terms of biological implausibility rather than tuned to pr
 
 ## 6. Exploratory analysis: mosaic aneuploidy from the VCF alone
 
-Mosaic variegated aneuploidy is defined by its cellular phenotype, yet the challenge supplies no BAM and the FASTQ set is 84 GB. We asked whether the aneuploidy itself is recoverable from allelic depths in the VCF, using two signals: B-allele frequency spread at heterozygous SNVs, and normalised mean read depth per chromosome. Both were computed over 2.24 million high-confidence heterozygous SNVs.
+Mosaic variegated aneuploidy is defined by its cellular phenotype, yet the challenge supplies no BAM and the FASTQ set is 84 GB. We asked whether the aneuploidy itself is recoverable from allelic depths in the VCF, using two signals: B-allele frequency spread at heterozygous SNVs, and normalised mean read depth per chromosome. Both were computed over 2,131,456 high-confidence heterozygous SNVs (autosomes, site depth at least 30).
 
 | Chromosome | Relative depth | z | Het sites outside [0.4, 0.6] | z |
 |---|---|---|---|---|
 | 21 | 1.280 | **2.87** | 34.2% | **2.32** |
 | 22 | 1.206 | 2.03 | 34.2% | 2.31 |
 | 20 | 1.146 | 1.36 | 34.0% | 2.27 |
-| genome baseline | ~0.975 | | ~21% | |
+| baseline (mean across autosomes) | 1.025 | | 23.7% | |
 
 The two axes are independent and they agree, and they agree quantitatively. A mosaic trisomy present in a fraction *f* of cells predicts relative depth 1 + *f*/2 and B-allele frequency bands at 1/(2 + *f*) and (1 + *f*)/(2 + *f*). The chromosome 21 depth ratio of 1.280 implies *f* is approximately 0.56, which predicts bands at 0.39 and 0.61, consistent with the observed excess of heterozygous sites falling outside the [0.4, 0.6] window.
 
@@ -185,21 +185,24 @@ The 194 ranked variants were screened against the **ACMG SF v3.2** list of 81 me
 
 ## 9. Reproducibility
 
-The pipeline is seven numbered scripts run in order, each resumable. It has no local database dependency beyond GENCODE, the HPO ontology and the HPO gene-to-phenotype table, all of which are downloaded by the scripts themselves and total 64 MB.
+The pipeline is ten numbered scripts run in order by `run_all.sh`, each individually rerunnable. It has no local database dependency beyond GENCODE, the HPO ontology and the HPO gene-to-phenotype table, all of which are downloaded by the scripts themselves and total 64 MB.
 
 | Script | Function |
 |---|---|
+| `00_setup.sh` | create directories, download GENCODE/HPO references, build the CDS BED |
 | `01_fetch.py` | download VCF, index and phenotype document (318 MB, no FASTQ) |
-| `02_vep.py` | VEP REST annotation helper |
-| `03_verify.sh` | independent verification of the reported variants and submission scoring |
+| `02_extract.sh` | reduce the VCF to the coding working set and the genome-wide BAF set |
+| `03_vep.py` | VEP REST annotation helper for an arbitrary variant list |
 | `04_annotate_all.py` | parallel resumable annotation of the coding variant set |
 | `05_phenotype.py` | Resnik phenotype similarity for all 5,268 HPO-annotated genes |
 | `06_rank.py` | blind genome-wide ranking, artefact QC, final output |
 | `07_aneuploidy.py` | mosaic aneuploidy screen from allelic depths |
+| `08_secondary.py` | ACMG SF v3.2 secondary findings screen |
+| `09_verify.sh` | independent verification of the reported variants and submission scoring |
 
-`03_verify.sh` downloads the organizers' own `evaluation.py` from the challenge Space and scores the submission file against the reported genotype, asserting 100 rank points and F-max 1.000. This is a self-check on submission formatting, not a claim about the answer key.
+`09_verify.sh` downloads the organizers' own `evaluation.py` from the challenge Space and scores the submission file against the reported genotype, asserting 100 rank points and F-max 1.000. This is a self-check on submission formatting, not a claim about the answer key.
 
-**Runtime and cost.** End to end, approximately 35 minutes of wall clock time on a single laptop, of which about 14 minutes is the VEP REST annotation of 28,071 variants. Peak disk footprint 762 MB. Monetary cost zero: every resource used is a free public API or a public reference file, and no cloud compute was used at any point.
+**Runtime and cost.** End to end, approximately 30 minutes of wall clock time on a single laptop (including the 318 MB data download), of which about 14 minutes is the VEP REST annotation of 28,071 variants. Peak disk footprint 762 MB. Monetary cost zero: every resource used is a free public API or a public reference file, and no cloud compute was used at any point.
 
 This is a deliberate design goal rather than an accident of constraint. A diagnostic pipeline that requires 100 GB of storage and a compute cluster is not deployable in the settings where undiagnosed rare disease patients are most concentrated. A pipeline that runs on a laptop in half an hour against public APIs is.
 
@@ -243,7 +246,7 @@ Both. The ranking function scores variants individually but carries an explicit 
 See section 7. The 194 ranked variants were screened against ACMG SF v3.2. One *TTN* missense variant was identified and judged not reportable under ACMG criteria, which recommend reporting truncating *TTN* variants only. No rows are marked `secondary` in the submission file. We note that our own artefact filter excluded *SERPINA1*, so alpha-1 antitrypsin status was not assessable.
 
 **Please provide an estimate of run time and cost.**
-Approximately 35 minutes wall clock on a single laptop, of which about 14 minutes is VEP REST annotation of 28,071 variants using six concurrent workers. Peak disk footprint 762 MB, including the 318 MB of challenge data. Monetary cost zero. The 84 GB FASTQ set was not downloaded and is not required by this approach.
+Approximately 30 minutes wall clock on a single laptop, including the 318 MB data download, of which about 14 minutes is VEP REST annotation of 28,071 variants using six concurrent workers. Peak disk footprint 762 MB, including the 318 MB of challenge data. Monetary cost zero. The 84 GB FASTQ set was not downloaded and is not required by this approach.
 
 **Method abstract (up to 500 words).**
 
@@ -251,7 +254,7 @@ We report a compound heterozygous genotype in *BUB1B* as the cause of PROBAND01'
 
 The method is a blind, phenotype-driven, genome-wide prioritisation. No candidate gene list is used; *BUB1B* appears nowhere in the ranking code. From 5,012,204 records we retain 28,071 by quality and coding-region restriction, 229 by gnomAD rarity and predicted impact, and 194 after excluding alignment-artefact hotspots. Ranking combines four independently computed axes: VEP consequence severity with SIFT and PolyPhen support, population rarity, ontology-aware Resnik phenotype similarity between each gene's HPO annotations and the proband's eight terms, and an inheritance-model term rewarding biallelic evidence. Both reported alleles rank in the top three genome-wide, separated from rank 4 by 2.02 points.
 
-Strengths. The approach is genuinely blind, so the result is a discovery rather than a confirmation. Phenotype similarity is an independent line of evidence: on the eight HPO terms alone, with no genetic data, *BUB1B* ranks 14th of 5,268 genes and the three known MVA genes all fall in the top 1.2% of the genome. The pipeline runs in 35 minutes on a laptop at zero cost with a 762 MB footprint, using no local annotation cache, which makes it deployable in resource-limited diagnostic settings. Failure modes are reported rather than suppressed: we retain a false positive at rank 2 and explain it, and we discard an earlier aneuploidy analysis that a quantisation artefact had corrupted.
+Strengths. The approach is genuinely blind, so the result is a discovery rather than a confirmation. Phenotype similarity is an independent line of evidence: on the eight HPO terms alone, with no genetic data, *BUB1B* ranks 14th of 5,268 genes and the three known MVA genes all fall in the top 1.2% of the genome. The pipeline runs in 30 minutes on a laptop at zero cost with a 762 MB footprint, using no local annotation cache, which makes it deployable in resource-limited diagnostic settings. Failure modes are reported rather than suppressed: we retain a false positive at rank 2 and explain it, and we discard an earlier aneuploidy analysis that a quantisation artefact had corrupted.
 
 Limitations. Phasing is not established. The alleles are 10,911 bp apart with no phasing tags and no parental samples, so the trans configuration is inferred from phenotype rather than demonstrated, and trio or long-read data would be required to confirm it. Structural and copy number variants are not assessed. Non-coding variation is excluded by construction, which is a recognised blind spot. The artefact filter, while principled, would suppress genuine findings in highly polymorphic genes and did exclude *SERPINA1*. Computational pathogenicity predictions are not functional evidence; a checkpoint activity assay in patient-derived cells would be required to demonstrate that p.Asn1002Lys is hypomorphic rather than merely predicted damaging.
 

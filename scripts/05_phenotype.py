@@ -3,6 +3,7 @@
 Ontology-aware, so a gene annotated with a parent term (e.g. "Embryonal neoplasm")
 still gets credit for the proband's "Rhabdomyosarcoma".
 """
+import os, sys as _s; os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))  # run from repo root
 import collections, json, math, pickle
 
 PROBAND_HPO = {

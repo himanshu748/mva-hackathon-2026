@@ -1,6 +1,6 @@
 # MVA Hackathon 2026, Track 1: blind variant prioritisation
 
-A phenotype-driven, genome-wide pipeline that recovers the causal genotype for PROBAND01 from a single-sample VCF, in about 35 minutes on a laptop, at zero cost, using 762 MB of disk and no local annotation cache.
+A phenotype-driven, genome-wide pipeline that recovers the causal genotype for PROBAND01 from a single-sample VCF, in about 30 minutes on a laptop, at zero cost, using 762 MB of disk and no local annotation cache.
 
 **Result.** Compound heterozygous ***BUB1B*** (MANE Select NM_001211.6):
 
@@ -17,7 +17,7 @@ Full write-up: [`report/HIMANSHUKUMARJHA_track1_report.md`](report/HIMANSHUKUMAR
 
 ## The pipeline is blind
 
-No candidate gene list, no disease hypothesis, no MVA gene panel appears anywhere in the ranking code. The string `BUB1B` does not occur in `06_rank.py` except inside a clearly fenced post-hoc block that runs after the ranking has been computed, sorted and written to disk, and which has no effect on any score.
+No candidate gene list, no disease hypothesis, no MVA gene panel appears anywhere in the ranking code. The string `BUB1B` does not occur in `06_rank.py` at all; the only hardcoded reference to the answer is a clearly fenced post-hoc block of two coordinates that runs after the ranking has been computed, sorted and written to disk, and which has no effect on any score.
 
 ```
 5,012,204   all records in the VCF
@@ -40,25 +40,28 @@ The phenotype axis is the interesting one. Scored on the proband's eight HPO ter
 Requires `bcftools` (`brew install bcftools`) and Python 3. Everything else is fetched by the scripts.
 
 ```bash
-export HF_TOKEN=hf_...        # an account granted access to the gated dataset
-python3 scripts/01_fetch.py   # 318 MB: VCF + index + phenotype doc. No FASTQ.
+export HF_TOKEN=hf_...   # an account granted access to the gated dataset
+./run_all.sh             # everything, start to finish, about 30 minutes
 ```
 
-Then, in order:
+`run_all.sh` runs the stages below in order. Each is also runnable on its own, from any working directory.
 
 | Script | Function | Time |
 |---|---|---|
+| `00_setup.sh` | directories, GENCODE/HPO references, CDS BED | ~2 min |
 | `01_fetch.py` | download VCF, index, phenotype document | ~5 min |
-| `02_vep.py` | VEP REST annotation helper | library |
-| `03_verify.sh` | independent verification of the reported variants | ~10 s |
+| `02_extract.sh` | VCF to coding working set + genome-wide BAF set | ~6 min |
+| `03_vep.py` | VEP REST helper for an arbitrary variant list | library |
 | `04_annotate_all.py` | parallel resumable VEP annotation of 28,071 variants | ~14 min |
 | `05_phenotype.py` | Resnik phenotype similarity for 5,268 genes | ~2 min |
 | `06_rank.py` | blind ranking, artefact QC, final output | ~10 s |
-| `07_aneuploidy.py` | mosaic aneuploidy screen from allelic depths | ~2 min |
+| `07_aneuploidy.py` | mosaic aneuploidy screen from allelic depths | ~1 min |
+| `08_secondary.py` | ACMG SF v3.2 secondary findings screen | ~1 s |
+| `09_verify.sh` | independent verification of the reported variants | ~10 s |
 
 `04_annotate_all.py` writes one file per batch and skips completed batches, so it is safe to interrupt and rerun.
 
-`03_verify.sh` is the honest-broker check. It pulls the organizers' own `evaluation.py` from the challenge Space, confirms the two reported variants against the raw VCF, re-checks both reference alleles against GRCh38 through the Ensembl sequence API, and scores the submission file, asserting 100 rank points and F-max 1.000.
+`09_verify.sh` is the honest-broker check. It pulls the organizers' own `evaluation.py` from the challenge Space, confirms the two reported variants against the raw VCF, re-checks both reference alleles against GRCh38 through the Ensembl sequence API, and scores the submission file, asserting 100 rank points and F-max 1.000.
 
 ## Design choices worth defending
 

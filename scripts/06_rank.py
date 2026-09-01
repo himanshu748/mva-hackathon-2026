@@ -10,6 +10,7 @@ Combines four orthogonal, independently computed axes:
 
 No MVA gene list is used anywhere. BUB1B is not referenced in this script.
 """
+import os, sys as _s; os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))  # run from repo root
 import glob, json, math, pickle, collections
 
 PHENO = pickle.load(open("out/pheno_scores.pkl", "rb"))

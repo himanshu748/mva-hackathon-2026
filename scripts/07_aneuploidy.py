@@ -1,55 +1,108 @@
-"""Detect mosaic whole-chromosome aneuploidy from the VCF alone.
+"""Screen for mosaic whole-chromosome aneuploidy using the VCF alone.
 
-MVA is defined by mosaic aneuploidy, but the challenge ships no BAM and the
-FASTQ set is 84 GB. Two signals recoverable from allelic depths in the VCF:
+Mosaic variegated aneuploidy is defined by its cellular phenotype, but the
+challenge ships no BAM and the FASTQ set is 84 GB. Two signals are recoverable
+from allelic depths in the VCF:
 
-  1. B-allele frequency (BAF) spread at heterozygous SNVs. A disomic
-     chromosome gives one band at 0.5. A cell population carrying an extra or
-     missing copy pulls het sites away from 0.5, and a *mosaic* population
-     produces an intermediate, chromosome-wide shift proportional to the
-     fraction of aneuploid cells.
-  2. Normalised median read depth, which tracks copy number directly.
+  1. B-allele frequency at heterozygous SNVs. A disomic chromosome gives one
+     band at 0.5. A population of cells carrying an extra copy splits het sites
+     into two bands, and a *mosaic* population present in a fraction f of cells
+     shifts them to 1/(2+f) and (1+f)/(2+f), an intermediate, chromosome-wide
+     displacement proportional to f.
+  2. Normalised read depth, which tracks copy number directly: a mosaic gain in
+     a fraction f of cells raises relative depth to 1 + f/2.
 
-Reported as a per-chromosome z-score against the genome-wide distribution.
+Because the two axes respond to the same underlying f through different
+arithmetic, agreement between them is meaningful and disagreement is diagnostic
+of technical bias.
+
+NOTE ON THE DEPTH STATISTIC. An earlier version of this analysis used the
+*median* depth per chromosome. Read depths are integers, so the median is
+heavily quantised: chromosome-level ratios collapsed onto a handful of discrete
+values (44/44, 45/44, 46/44, 47/44) and manufactured structure that was not in
+the data. This version uses the mean, which is continuous. The lesson
+generalises: do not use a median of a low-cardinality integer distribution as a
+continuous summary statistic.
+
+CAVEAT. This is a single sample with no matched control cohort. GC content and
+mappability vary systematically across chromosomes and produce depth and BAF
+deviations that mimic low-level mosaicism, particularly on the GC-rich and
+acrocentric chromosomes. Nothing here should be read as a positive finding
+without GC correction against a reference panel, or confirmation by karyotype.
 """
-import collections, statistics as st
+import collections
+import os
+import statistics as st
+
+os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+
+MIN_DEPTH = 30      # per-site depth floor for a BAF estimate to be meaningful
+MIN_SITES = 1000    # minimum het sites before a chromosome is summarised
 
 het = collections.defaultdict(list)
 dep = collections.defaultdict(list)
+
 for line in open("out/baf_raw.tsv"):
     c = line.rstrip("\n").split("\t")
-    if len(c) < 5: continue
-    chrom, gt, ad, dp = c[0], c[2], c[3], c[4]
-    if chrom in ("X", "Y", "MT") or not chrom.isdigit(): continue
+    if len(c) < 5 or not c[0].isdigit():   # autosomes only
+        continue
     try:
-        ref, alt = (int(x) for x in ad.split(",")[:2]); dpi = int(dp)
+        ref, alt = (int(x) for x in c[3].split(",")[:2])
+        dp = int(c[4])
     except ValueError:
         continue
-    if dpi >= 20: dep[chrom].append(dpi)
-    if gt in ("0/1", "0|1", "1|0") and ref + alt >= 20:
-        het[chrom].append(alt / (ref + alt))
+    dep[c[0]].append(dp)
+    if c[2] in ("0/1", "0|1", "1|0") and ref + alt >= MIN_DEPTH:
+        het[c[0]].append(alt / (ref + alt))
 
-gw_dep = st.median([d for v in dep.values() for d in v])
+genome_mean = st.mean([d for v in dep.values() for d in v])
+
 rows = []
 for chrom in sorted(het, key=int):
     b = het[chrom]
-    if len(b) < 1000: continue
-    spread = st.median([abs(x - 0.5) for x in b])      # 0 = clean disomy
-    rows.append((chrom, len(b), st.median(b), spread,
-                 st.median(dep[chrom]) / gw_dep))
+    if len(b) < MIN_SITES:
+        continue
+    # Fraction of het sites displaced from the diploid band. A mosaic gain
+    # pushes sites symmetrically outward, so this is direction-agnostic.
+    off = sum(1 for x in b if x < 0.40 or x > 0.60) / len(b)
+    rows.append((chrom, len(b), st.mean(dep[chrom]) / genome_mean, off))
 
-sp = [r[3] for r in rows]; mu_s, sd_s = st.mean(sp), st.stdev(sp)
-dr = [r[4] for r in rows]; mu_d, sd_d = st.mean(dr), st.stdev(dr)
+mu_d, sd_d = st.mean([r[2] for r in rows]), st.stdev([r[2] for r in rows])
+mu_o, sd_o = st.mean([r[3] for r in rows]), st.stdev([r[3] for r in rows])
 
-print(f"genome-wide median depth: {gw_dep:.0f}x   het SNVs analysed: {sum(r[1] for r in rows):,}\n")
-print(f"{'CHR':<5}{'HET SNVs':>10}{'medBAF':>9}{'SPREAD':>9}{'z(spread)':>11}{'REL DEPTH':>11}{'z(depth)':>10}  FLAG")
-for chrom, n, medb, spread, rel in rows:
-    zs, zd = (spread - mu_s) / sd_s, (rel - mu_d) / sd_d
+print(f"genome-wide mean depth: {genome_mean:.1f}x")
+print(f"heterozygous SNVs analysed: {sum(r[1] for r in rows):,}\n")
+print(f"{'CHR':<5}{'HET SNVs':>10}{'REL DEPTH':>11}{'z':>8}{'BAF OFF-BAND':>14}{'z':>8}   FLAG")
+
+flagged = []
+for chrom, n, rel, off in rows:
+    zd, zo = (rel - mu_d) / sd_d, (off - mu_o) / sd_o
     flag = ""
-    if abs(zs) > 2.5 or abs(zd) > 2.5: flag = "<<< OUTLIER"
-    elif abs(zs) > 1.5 or abs(zd) > 1.5: flag = "<  watch"
-    print(f"{chrom:<5}{n:>10,}{medb:>9.3f}{spread:>9.4f}{zs:>11.2f}{rel:>11.3f}{zd:>10.2f}  {flag}")
-print("\nInterpretation: a constitutional (non-mosaic) trisomy would show relative depth ~1.5")
-print("and a bimodal BAF at ~0.33/0.67. A low-level mosaic shows a milder chromosome-wide")
-print("shift in both axes. Blood is often the least-affected tissue in MVA, so a negative")
-print("result here constrains the mosaic fraction in blood rather than excluding aneuploidy.")
+    if zd > 2.5 or zo > 2.5:
+        flag = "<<< OUTLIER"
+        flagged.append((chrom, rel, off))
+    elif zd > 1.5 or zo > 1.5:
+        flag = "<   watch"
+        flagged.append((chrom, rel, off))
+    print(f"{chrom:<5}{n:>10,}{rel:>11.4f}{zd:>8.2f}{off:>14.4f}{zo:>8.2f}   {flag}")
+
+print(f"\nbaseline: relative depth {mu_d:.3f}, off-band fraction {mu_o:.3f}")
+print(f"a constitutional (non-mosaic) trisomy would show relative depth 1.500; "
+      f"observed maximum is {max(r[2] for r in rows):.4f}")
+
+if flagged:
+    print("\nImplied mosaic fraction if the depth signal were biological (f = 2*(rel-1)):")
+    for chrom, rel, off in flagged:
+        f = 2 * (rel - 1)
+        if f <= 0:
+            continue
+        print(f"  chr{chrom}: f = {f:.2f} -> predicted BAF bands at "
+              f"{1/(2+f):.2f} and {(1+f)/(2+f):.2f} (observed off-band fraction {off:.3f})")
+
+print("\nInterpretation: concordance between the two axes is necessary but not")
+print("sufficient. GC content and mappability covary with both, and the flagged")
+print("chromosomes here are GC-rich and/or acrocentric. Treat any signal as a")
+print("candidate requiring GC-corrected depth against a reference panel, or")
+print("confirmation by karyotype or FISH. Blood is frequently among the least")
+print("affected tissues in MVA, so a null result constrains the mosaic fraction")
+print("in this sample rather than excluding aneuploidy in the individual.")
