@@ -12,6 +12,9 @@ A phenotype-driven, genome-wide pipeline that recovers the causal genotype for P
 A null allele in trans with a hypomorph: the canonical architecture of mosaic variegated aneuploidy type 1. Both alleles rank in the **top 3 of 5,012,204** input records.
 
 Full write-up: [`report/HIMANSHUKUMARJHA_track1_report.md`](report/HIMANSHUKUMARJHA_track1_report.md).
+Submitted 1 September 2026: **100.0 rank points, F-max 1.000, full match at rank 1.**
+
+**Track 2** proposes senolytic therapy (dasatinib plus quercetin) as a repurposing hypothesis, reasoning from the mechanism rather than from the target: [`report/HIMANSHUKUMARJHA_track2_report.md`](report/HIMANSHUKUMARJHA_track2_report.md).
 
 ---
 
