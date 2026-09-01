@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MVA Hackathon 2026 - Track 2 pitch</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --ink:#e6edf3; --dim:#8b949e;
+    --accent:#58a6ff; --good:#3fb950; --warn:#f85149; --line:#30363d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    overflow:hidden}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;
+    justify-content:center;padding:6vh 8vw;opacity:0;transition:opacity .25s}
+  .slide.on{display:flex;opacity:1}
+  h1{font-size:5.2vw;line-height:1.08;letter-spacing:-.02em;margin-bottom:3vh}
+  h2{font-size:3.4vw;line-height:1.15;letter-spacing:-.015em;margin-bottom:3.5vh}
+  h3{font-size:2.1vw;color:var(--accent);text-transform:uppercase;
+    letter-spacing:.16em;margin-bottom:2.5vh;font-weight:600}
+  p{font-size:2.3vw;line-height:1.5;color:var(--dim);max-width:62ch}
+  .big{font-size:6vw;font-weight:700;letter-spacing:-.03em;line-height:1}
+  .accent{color:var(--accent)} .good{color:var(--good)} .warn{color:var(--warn)}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  ul{list-style:none} li{font-size:2.2vw;line-height:1.75;color:var(--dim)}
+  li b{color:var(--ink);font-weight:600}
+  .row{display:flex;gap:3vw;align-items:stretch;margin-top:1vh}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:3vh 2.4vw;flex:1}
+  .card .k{font-size:1.5vw;color:var(--dim);text-transform:uppercase;
+    letter-spacing:.12em;margin-bottom:1.4vh}
+  .card .v{font-size:2.5vw;font-weight:650;line-height:1.25}
+  .funnel{font-size:2.1vw;line-height:2;letter-spacing:.01em}
+  .funnel .n{display:inline-block;width:7.5ch;text-align:right;
+    color:var(--ink);font-weight:650;margin-right:1.6ch}
+  .funnel .last{color:var(--good)}
+  .chain{font-size:1.95vw;line-height:2.15;color:var(--dim)}
+  .chain .hit{color:var(--warn);font-weight:700}
+  .chain .arrow{color:var(--line)}
+  .rank{display:flex;gap:1.2vw;align-items:baseline;font-size:2vw;line-height:2.1}
+  .rank .pos{width:3ch;color:var(--dim);text-align:right}
+  .rank.me .pos,.rank.me .g{color:var(--good);font-weight:700}
+  .rank .g{width:12ch}
+  footer{position:absolute;right:3vw;bottom:2.5vh;font-size:1.3vw;color:var(--line)}
+  .kicker{font-size:1.7vw;color:var(--line);margin-top:4vh}
+</style>
+</head>
+<body>
+
+<section class="slide on">
+  <h3>Rare Disease, Real Kid &middot; MVA Hackathon 2026</h3>
+  <h1>One child.<br>One genome.<br><span class="accent">One mechanism.</span></h1>
+  <p>Rhabdomyosarcoma &middot; growth failure &middot; nephrocalcinosis &middot; parental recurrent miscarriage</p>
+  <footer>1 / 8 &middot; 0:00</footer>
+</section>
+
+<section class="slide">
+  <h3>Track 1 &middot; blind pipeline</h3>
+  <div class="funnel mono">
+    <div><span class="n">5,012,204</span> variants in the VCF</div>
+    <div><span class="n">28,071</span> coding, high confidence</div>
+    <div><span class="n">229</span> rare and protein altering</div>
+    <div><span class="n">194</span> after artefact QC</div>
+    <div><span class="n last">1</span> <span class="good">BUB1B</span></div>
+  </div>
+  <div class="row">
+    <div class="card"><div class="k">Allele 1</div>
+      <div class="v">p.Leu737Ter<br><span class="warn">true null</span></div></div>
+    <div class="card"><div class="k">Allele 2</div>
+      <div class="v">p.Asn1002Lys<br><span class="accent">hypomorph</span></div></div>
+    <div class="card"><div class="k">Score</div>
+      <div class="v good">100 / 100<br>F-max 1.000</div></div>
+  </div>
+  <footer>2 / 8 &middot; 0:20</footer>
+</section>
+
+<section class="slide">
+  <h3>Phenotype alone, no genetic data</h3>
+  <h2>The clinical terms pointed at the gene<br>before we opened the VCF.</h2>
+  <div>
+    <div class="rank"><span class="pos">12</span><span class="g mono">PTH1R</span></div>
+    <div class="rank"><span class="pos">13</span><span class="g mono">RPS19</span></div>
+    <div class="rank me"><span class="pos">14</span><span class="g mono">BUB1B</span><span>of 5,268 genes</span></div>
+    <div class="rank"><span class="pos">15</span><span class="g mono">CEP57</span><span style="color:var(--line)">also an MVA gene</span></div>
+    <div class="rank"><span class="pos">62</span><span class="g mono">TRIP13</span><span style="color:var(--line)">also an MVA gene</span></div>
+  </div>
+  <footer>3 / 8 &middot; 0:48</footer>
+</section>
+
+<section class="slide">
+  <h3>Mechanism</h3>
+  <div class="chain mono">
+    <div>BUB1B null + hypomorph</div>
+    <div><span class="arrow">&rarr;</span> reduced BUBR1 dosage</div>
+    <div><span class="arrow">&rarr;</span> spindle assembly checkpoint slips</div>
+    <div><span class="arrow">&rarr;</span> chromosomes missegregate <span style="color:var(--line)">(the variegated aneuploidy)</span></div>
+    <div><span class="arrow">&rarr;</span> aneuploidy stress and DNA damage</div>
+    <div><span class="arrow">&rarr;</span> <span class="hit">senescent cells accumulate + SASP</span></div>
+    <div><span class="arrow">&rarr;</span> tissue failure, growth restriction, tumour-promoting niche</div>
+  </div>
+  <p class="kicker">You cannot drug a missing allele. You can drug that.</p>
+  <footer>4 / 8 &middot; 1:03</footer>
+</section>
+
+<section class="slide">
+  <h3>Causal, not correlative</h3>
+  <h2>The <span class="accent">BubR1 hypomorphic mouse</span> carries a lesion<br>in the same gene. Clear its senescent cells,<br>and the disease slows.</h2>
+  <div class="row">
+    <div class="card"><div class="k">Mouse signature phenotype</div>
+      <div class="v">Sarcopenia<br><span style="font-size:1.6vw;color:var(--dim)">muscle wasting</span></div></div>
+    <div class="card"><div class="k">This child, HP:0003202</div>
+      <div class="v good">Skeletal muscle atrophy<br><span style="font-size:1.6vw;color:var(--dim)">and failure to thrive</span></div></div>
+  </div>
+  <p class="kicker">Baker et al., Nature 479:232 (2011)</p>
+  <footer>5 / 8 &middot; 1:38</footer>
+</section>
+
+<section class="slide">
+  <h3>The proposal</h3>
+  <h1 style="font-size:4.4vw">Senolytics:<br><span class="accent">dasatinib + quercetin</span></h1>
+  <div class="row">
+    <div class="card"><div class="k">Pediatric status</div>
+      <div class="v">FDA approved<br><span style="font-size:1.6vw;color:var(--dim)">weight-based dosing exists</span></div></div>
+    <div class="card"><div class="k">Human evidence</div>
+      <div class="v">Senescent cells fall<br><span style="font-size:1.6vw;color:var(--dim)">first-in-human trials</span></div></div>
+    <div class="card"><div class="k">Exposure</div>
+      <div class="v">3 days / week<br><span style="font-size:1.6vw;color:var(--dim)">not continuous</span></div></div>
+  </div>
+  <footer>6 / 8 &middot; 2:00</footer>
+</section>
+
+<section class="slide">
+  <h3 style="color:var(--warn)">The problem with our own proposal</h3>
+  <h2>Dasatinib affects <span class="warn">growth in children</span>.<br>This child's presenting problem<br>is <span class="warn">growth failure</span>.</h2>
+  <ul>
+    <li><b>Our claim:</b> intermittent dosing changes the exposure profile.</li>
+    <li><b>Our evidence:</b> none yet. That is experiment 5.</li>
+    <li><b>Kill switch:</b> if patient cells show no senescent burden, the hypothesis is dead.</li>
+  </ul>
+  <footer>7 / 8 &middot; 2:22</footer>
+</section>
+
+<section class="slide">
+  <h3>Beyond one child</h3>
+  <h2>Chromosomal instability disorders<br>converge on the <span class="accent">same node</span>.</h2>
+  <p><span class="mono">CEP57</span> &middot; <span class="mono">TRIP13</span> &middot; DNA repair and CIN disorders broadly.
+     Pipeline: 30 minutes, one laptop, zero cost, no local annotation cache.</p>
+  <p class="mono" style="font-size:1.8vw;color:var(--accent);margin-top:3vh">github.com/himanshu748/mva-hackathon-2026</p>
+  <p class="kicker">Thank you to the child and family who shared their genome.</p>
+  <footer>8 / 8 &middot; 2:42</footer>
+</section>
+
+<script>
+  // Ensure key events reach the page even if the window was opened unfocused.
+  document.body.tabIndex = -1;
+  document.body.focus();
+  addEventListener('load', () => document.body.focus());
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = 0;
+  const show = n => {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('on', k === i));
+  };
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight',' ','PageDown','n'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (['ArrowLeft','PageUp','p'].includes(e.key))       { e.preventDefault(); show(i - 1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End')  show(slides.length - 1);
+    if (e.key === 'f') document.documentElement.requestFullscreen?.();
+  });
+  addEventListener('click', () => show(i + 1));
+</script>
+</body>
+</html>
