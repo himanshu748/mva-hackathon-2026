@@ -2,6 +2,12 @@
 
 Writes one JSON file per batch so the run is resumable: rerunning skips
 any batch whose part file already exists.
+
+Determinism note. Re-fetching a batch produces a byte-different file: the VEP
+REST service does not guarantee a stable key order in its JSON objects. The
+content is stable. A field-by-field comparison of re-fetched batches against
+earlier ones showed zero differing values, identical record order, and an
+unchanged final ranking. Compare these files semantically, not by checksum.
 """
 import json, os, time, urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
