@@ -207,7 +207,7 @@ This is a deliberate design goal rather than an accident of constraint. A diagno
 
 ## 10. Methods description form
 
-**Team name:** *(to be completed)*
+**Team name:** Himanshu Kumar
 
 **Model number:** 1
 
