@@ -2,7 +2,7 @@
 # Reproducible verification of the Track 1 submission. Run from the repo root.
 set -euo pipefail
 VCF=data/WGS_EX2312012_HGWCNDSX7.vcf.gz
-CSV=out/HIMANSHUKUMARJHA_bub1b-compound-het.csv
+CSV=report/HIMANSHUKUMARJHA_bub1b-compound-het.csv
 
 echo "== VCF records =="
 bcftools view -H -r 15:40209701,15:40220612 "$VCF"
