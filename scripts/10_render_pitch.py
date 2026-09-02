@@ -41,50 +41,60 @@ PORT = 8749
 # One entry per slide, in order. Text is what gets spoken; it must stay in sync
 # with report/track2_pitch_script.md.
 NARRATION = [
-    "A child with rhabdomyosarcoma, growth failure, and a family history of recurrent "
+    # NOTE ON SPELLING. These strings are phonetic respellings tuned for the TTS engine,
+    # not prose. Deepgram renders "BUB1B" as "bub one byte", "anaphase" as "anaplasm",
+    # "phenotype" as "feta type", and drops "senolytics" entirely. Every change here was
+    # driven by transcribing the rendered audio back with Deepgram speech to text and
+    # diffing it against intent. Run scripts/11_check_narration.py after any edit.
+    "A child with rabdo myo sarcoma, growth failure, and a family history of recurrent "
     "miscarriage. Fewer than fifty people worldwide share his condition. His family opened "
     "his genome to strangers, hoping someone could help. "
     "This is what we found, and what we think can be done about it.",
 
     "Our pipeline is blind. No gene panel, no disease hypothesis. Five million variants, "
     "filtered to one hundred and ninety four, ranked on four independent axes. "
-    "Top of that list: compound heterozygous B U B 1 B. A nonsense allele that triggers decay, "
-    "so a true null. In trans with a final exon missense that escapes it, so a hypomorph. "
-    "One hundred out of one hundred. F max, one point zero.",
+    "Top of that list: compound heterozygous bub one bee. A nonsense allele that triggers "
+    "decay, so a true null. In trans with a final exon missense that escapes it, so a "
+    "hypomorph. One hundred out of one hundred. Eff max, one point zero.",
 
-    "Here is the part that convinced us it was real. Scored on the eight clinical terms alone, "
-    "with no genetic data whatsoever, B U B 1 B ranks fourteenth out of five thousand two "
-    "hundred and sixty eight genes. The phenotype pointed at the gene before we looked at a "
-    "single variant.",
+    "Here is the part that convinced us it was real. Scored on the eight clinical terms "
+    "alone, with no genetic data whatsoever, bub one bee ranks fourteenth out of five "
+    "thousand two hundred and sixty eight genes. The clinical picture pointed at the gene "
+    "before we looked at a single variant.",
 
-    "B U B R 1 runs the spindle assembly checkpoint. It holds the cell at anaphase until every "
-    "chromosome is properly attached. Halve the dose and the brake slips, anaphase starts "
-    "early, and chromosomes missegregate. That is the variegated aneuploidy. "
-    "But the therapeutic question is what happens to those aneuploid cells. They accumulate "
-    "damage and turn senescent, pumping inflammatory signals into the tissue. You cannot drug "
-    "a missing allele. You can drug that.",
+    "Bub are one runs the spindle assembly checkpoint. It holds the cell at anna phase "
+    "until every chromosome is properly attached. Cut that dose in half, and the brake "
+    "slips. Anna phase starts early, and chromosomes are pulled apart wrongly. That is the "
+    "variegated an you ploidy. "
+    "But the therapeutic question is what happens to those unstable cells. They accumulate "
+    "damage and turn senescent, pumping inflammatory signals into the tissue. You cannot "
+    "drug a missing allele. But you can drug that.",
 
-    "And this is not speculation. The Bub R 1 hypomorphic mouse carries a lesion in the same "
-    "gene. Clear its senescent cells, and the disease slows. That is causal, and it is "
+    "And this is not speculation. The bub are one hypomorphic mouse carries a lesion in the "
+    "same gene. Clear its senescent cells, and the disease slows. That is causal, and it is "
     "published in Nature. "
-    "The mouse's signature phenotype is muscle wasting. So is this child's.",
+    "The mouse's signature feature is muscle wasting. So is this child's.",
 
-    "So we propose senolytics: dasatinib plus quercetin. Dasatinib is already approved for "
-    "children, with established dosing. The combination has first in human data showing "
-    "senescent cells actually fall. And it is dosed three days a week, not every day.",
+    "So we propose a drug class called seen oh lytics: dassa tinnib, plus kwer se tin. "
+    "Dassa tinnib is already approved for children, with established dosing. The "
+    "combination has first in human data showing senescent cells actually fall. And it is "
+    "dosed three days a week, not every day.",
 
-    "Now the problem, and we would rather say it than have you find it. Dasatinib affects growth "
-    "in children, and this child's presenting problem is growth failure. We think intermittent "
-    "dosing resolves that. We have not shown it. "
-    "So that is the experiment. And if patient cells show no senescent burden, our hypothesis "
-    "is dead. We have said exactly how to kill it.",
+    "Now the problem, and we would rather say it than have you find it. Dassa tinnib "
+    "affects growth in children, and this child's presenting problem is growth failure. We "
+    "think intermittent dosing resolves that. We have not shown it. "
+    "So that is the experiment. And if patient cells show no senescent burden, our "
+    "hypothesis is dead. We have said exactly how to kill it.",
 
-    "This is not really about one child. Chromosomal instability disorders converge on the same "
-    "node. The pipeline runs on a laptop in thirty minutes, for zero cost. Everything is open.",
+    "This is not really about one child. Chromosomal instability disorders converge on the "
+    "same node. The pipeline runs on a laptop in thirty minutes, for zero cost. Everything "
+    "is open.",
 ]
 
-TAIL = 0.6
-TARGET_SECONDS = 168   # aim for 2:48, leaving margin under the hard 3:00 limit          # seconds of silence held after each slide's narration
+TAIL = 0.6          # seconds of silence held after each slide's narration
+TARGET_SECONDS = 174   # aim for 2:54. Higher than it needs to be on purpose: forcing
+                       # a large atempo speed-up measurably degrades intelligibility of
+                       # the long clinical terms, so take the runtime over the clarity.
 SAY_VOICE = "Samantha"
 SAY_WPM = 145       # default `say` rate is ~186 wpm, too fast to follow
 
