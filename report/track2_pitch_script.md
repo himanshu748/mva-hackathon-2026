@@ -2,7 +2,11 @@
 
 **Target length:** 2 min 50 s (limit is 3 min; finish under it).
 **Word count:** 350 spoken words. At a natural 130 to 140 words per minute with pauses this lands around 2:40 to 2:50.
-**How to record:** open `report/pitch_slides.html` full screen, press `f`, then screen-record with voiceover. Arrow keys or space advance slides. The slide number and its target timestamp are shown bottom-right so you can stay on pace.
+**Rendered version:** `report/HIMANSHUKUMARJHA_track2_pitch.mp4` (2:44) was produced by `scripts/10_render_pitch.py` using Deepgram Aura 2 (voice `aura-2-harmonia-en`). Rerun that script to rebuild it; pass `--engine say` for an offline local voice instead.
+
+**To record it yourself instead:** open `report/pitch_slides.html` full screen, press `f`, then screen-record with voiceover. Arrow keys or space advance slides. The slide number and its target timestamp are shown bottom-right so you can stay on pace.
+
+**Note:** the narration in `10_render_pitch.py` is the authoritative spoken text and is slightly tighter than the prose below, which was trimmed to keep the runtime under the 3:00 limit.
 
 Read it conversationally. Do not rush. The pauses marked `[beat]` are doing work: they are where a judge catches up.
 

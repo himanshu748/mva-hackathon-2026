@@ -183,6 +183,10 @@ See sections 2 and 3. Briefly: we characterised the allele series from Track 1 (
 
 The assistant was used for literature search, reasoning and drafting. Every factual claim about drug approval status, dosing, trial results and mouse-model findings was verified against primary or authoritative sources listed below, and citations are to those sources rather than to model output. No genomic or clinical data was uploaded to any commercial generative AI provider. Challenge data handling is as described in the Track 1 report.
 
+**Text to speech.** The pitch video narration was synthesised with **Deepgram Aura 2** (voice `aura-2-harmonia-en`) rather than recorded by a human voice; the rendering pipeline is `scripts/10_render_pitch.py`. The text sent to that service is the pitch narration only. It contains no gated challenge data beyond the variant and phenotype content that this submission itself publishes under CC BY 4.0 and that the required public pitch video necessarily discloses. No VCF content, no raw clinical document and no other dataset material was sent.
+
+**Against the organizers' Processor vs Recipient test** (Community discussion #2): every service used here processes data solely to return a result, takes no rights in it and cannot use it for its own purposes. Model training is disabled on the Claude account, and per the organizers' caution that "turning training off is not always complete", no assistant output was rated or given feedback during this work, so nothing entered a feedback-derived training path.
+
 **Was candidate identification automated or primarily manual literature review and expert curation?**
 Primarily manual, mechanism-led literature review, deliberately so. We did not run a drug-target database query against *BUB1B*, because that approach returns mitotic inhibitors, which are contraindicated by the mechanism: the defect is insufficient checkpoint function and such drugs would perturb it further. Candidate identification was driven by reasoning about the disease mechanism and then constrained by pediatric approval status and by this patient's specific risk profile.
 

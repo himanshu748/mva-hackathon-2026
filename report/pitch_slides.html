@@ -170,6 +170,9 @@
     if (e.key === 'f') document.documentElement.requestFullscreen?.();
   });
   addEventListener('click', () => show(i + 1));
+  // ?s=N jumps straight to a slide, used by the render pipeline to capture stills.
+  const q = new URLSearchParams(location.search).get('s');
+  if (q !== null) { document.body.style.cursor='none'; show(parseInt(q, 10) - 1); }
 </script>
 </body>
 </html>
