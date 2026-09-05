@@ -18,7 +18,7 @@ for line in (ROOT / ".env").read_text().splitlines():
 AUDIO = ROOT / "out" / "pitch" / "narration.wav"
 # Phrases a judge has to come away with, as they should sound in the transcript.
 MUST_HEAR = [
-    "bub1b",                # the gene; Deepgram STT normalises the spoken form to this
+    ("bub1b", "bub one b"), # the gene; STT writes the spoken form either way
     "compound heterozygous",
     "nonsense allele",
     "hypomorph",
@@ -52,7 +52,9 @@ text = alt["transcript"].lower()
 print(f"transcription confidence: {alt['confidence']:.3f}\n")
 ok = True
 for phrase in MUST_HEAR:
-    hit = phrase.lower() in text
+    opts = phrase if isinstance(phrase, tuple) else (phrase,)
+    hit = any(o.lower() in text for o in opts)
+    phrase = " / ".join(opts)
     ok &= hit
     print(f"  {'OK  ' if hit else 'MISS'}  heard: {phrase}")
 print()

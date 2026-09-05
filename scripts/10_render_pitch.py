@@ -41,46 +41,46 @@ PORT = 8749
 # One entry per slide, in order. Text is what gets spoken; it must stay in sync
 # with report/track2_pitch_script.md.
 NARRATION = [
-    # NOTE ON SPELLING. These strings are phonetic respellings tuned for the TTS engine,
-    # not prose. Deepgram renders "BUB1B" as "bub one byte", "anaphase" as "anaplasm",
-    # "phenotype" as "feta type", and drops "senolytics" entirely. Every change here was
-    # driven by transcribing the rendered audio back with Deepgram speech to text and
-    # diffing it against intent. Run scripts/11_check_narration.py after any edit.
-    "A child with rabdo myo sarcoma, growth failure, and a family history of recurrent "
+    # Written as natural prose. Heavy phonetic respelling was tried and reverted: it fixed
+    # pronunciation but flattened the prosody and made the delivery sound robotic. The only
+    # respellings kept are the two gene names, written the way a geneticist says them aloud
+    # ("bub one bee", "bub are one"), which is both clearer and more natural than the
+    # letter-by-letter reading the engine defaults to.
+    # Verify any edit with scripts/11_check_narration.py.
+    "A child with rhabdomyosarcoma, growth failure, and a family history of recurrent "
     "miscarriage. Fewer than fifty people worldwide share his condition. His family opened "
-    "his genome to strangers, hoping someone could help. "
-    "This is what we found, and what we think can be done about it.",
+    "his genome to strangers. This is what we found, and what can be done about it.",
 
     "Our pipeline is blind. No gene panel, no disease hypothesis. Five million variants, "
     "filtered to one hundred and ninety four, ranked on four independent axes. "
     "Top of that list: compound heterozygous bub one bee. A nonsense allele that triggers "
     "decay, so a true null. In trans with a final exon missense that escapes it, so a "
-    "hypomorph. One hundred out of one hundred. Eff max, one point zero.",
+    "hypomorph. One hundred out of one hundred. F-max, one point zero.",
 
     "Here is the part that convinced us it was real. Scored on the eight clinical terms "
     "alone, with no genetic data whatsoever, bub one bee ranks fourteenth out of five "
     "thousand two hundred and sixty eight genes. The clinical picture pointed at the gene "
     "before we looked at a single variant.",
 
-    "Bub are one runs the spindle assembly checkpoint. It holds the cell at anna phase "
-    "until every chromosome is properly attached. Cut that dose in half, and the brake "
-    "slips. Anna phase starts early, and chromosomes are pulled apart wrongly. That is the "
-    "variegated an you ploidy. "
+    "Bub are one runs the spindle assembly checkpoint. It holds the cell at anaphase "
+    "until every chromosome is attached. Halve that dose and the brake slips: anaphase "
+    "starts early, and chromosomes are pulled apart wrongly. That is the variegated "
+    "aneuploidy. "
     "But the therapeutic question is what happens to those unstable cells. They accumulate "
     "damage and turn senescent, pumping inflammatory signals into the tissue. You cannot "
-    "drug a missing allele. But you can drug that.",
+    "drug a missing allele. You can drug that.",
 
     "And this is not speculation. The bub are one hypomorphic mouse carries a lesion in the "
     "same gene. Clear its senescent cells, and the disease slows. That is causal, and it is "
     "published in Nature. "
-    "The mouse's signature feature is muscle wasting. So is this child's.",
+    "The mouse's signature phenotype is muscle wasting. So is this child's.",
 
-    "So we propose a drug class called seen oh lytics: dassa tinnib, plus kwer se tin. "
-    "Dassa tinnib is already approved for children, with established dosing. The "
+    "So we propose senolytics: dasatinib, plus quercetin. "
+    "Dasatinib is already approved for children, with established dosing. The "
     "combination has first in human data showing senescent cells actually fall. And it is "
     "dosed three days a week, not every day.",
 
-    "Now the problem, and we would rather say it than have you find it. Dassa tinnib "
+    "Now the problem, and we would rather say it than have you find it. Dasatinib "
     "affects growth in children, and this child's presenting problem is growth failure. We "
     "think intermittent dosing resolves that. We have not shown it. "
     "So that is the experiment. And if patient cells show no senescent burden, our "
@@ -92,7 +92,7 @@ NARRATION = [
 ]
 
 TAIL = 0.6          # seconds of silence held after each slide's narration
-TARGET_SECONDS = 174   # aim for 2:54. Higher than it needs to be on purpose: forcing
+TARGET_SECONDS = 176   # aim for 2:54. Higher than it needs to be on purpose: forcing
                        # a large atempo speed-up measurably degrades intelligibility of
                        # the long clinical terms, so take the runtime over the clarity.
 SAY_VOICE = "Samantha"
@@ -135,7 +135,7 @@ def tts_deepgram(text: str, dest: Path) -> None:
     if not key:
         sys.exit("DEEPGRAM_API_KEY is not set. Export it, or drop --engine deepgram "
                  "to use the local voice.")
-    model = os.environ.get("DEEPGRAM_VOICE", "aura-2-harmonia-en")
+    model = os.environ.get("DEEPGRAM_VOICE", "aura-2-cora-en")
     req = urllib.request.Request(
         f"https://api.deepgram.com/v1/speak?model={model}",
         data=json.dumps({"text": text}).encode(),
