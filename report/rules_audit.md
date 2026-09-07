@@ -19,8 +19,8 @@ A perfect Track 1 score is foundational. The FAQ also requires a methods account
 |---|---|
 | Existing market-approved medicine for Track 2 | Dasatinib is the approved candidate. Quercetin is explicitly an experimental partner; D+Q is not described as approved for MVA. |
 | Mechanism connecting variants to repurposing | Report separates predicted allele effects, checkpoint dysfunction, hypothesized senescent burden, and untested drug response. |
-| Written report and GitHub repository | Both reports and reproducible code are present. Final strengthening revision must be pushed before uploading the new reports. |
-| Three-minute recorded pitch; YouTube or Vimeo URL | Revised pitch includes the new evidence and full acknowledgement. Verify the final export remains under 180 seconds, then obtain a hosted URL. Upload is still pending. |
+| Written report and GitHub repository | Both reports and reproducible code are present. The scientific strengthening revision was pushed as `8a262bf`; the final silent-media update follows separately. |
+| Three-minute recorded pitch; YouTube or Vimeo URL | A silent, readable pitch is used at the participant’s request; the instructions do not explicitly require voice narration. It includes new evidence and the full acknowledgement. Verify its export under 180 seconds and obtain a hosted URL; upload is still pending. |
 | Team/display name and filenames | Himanshu Kumar; report/CSV filenames retain HIMANSHUKUMARJHA. Use the same identity for revisions. |
 | Submission limits | Track 1: six per participant; highest score displayed. Track 2: three per team; latest reviewed. Check quotas and success receipts when submitting. |
 | AI provider, plan/tier and settings | Disclosure names Claude Code/consumer subscription, Codex Pro and Deepgram models. User confirmed training off for Codex and the original Claude work. Deepgram requests explicitly opt out. Historical retention and feedback handling are not independently audited. |
@@ -39,7 +39,7 @@ The current timeline lists 24 October at 23:59 UTC as the submission deadline. D
 
 ## Final submission gate
 
-A report being ready, a Git push or a video upload is not a submission receipt. Upload the final report versions and video link, save the platform's success result and new quota counts for each track, and then update the status record. As of this audit, neither revised entry has been submitted.
+A report being ready, a Git push or a video upload is not a submission receipt. Upload the final report versions and video link, save the platform's success result and new quota counts for each track, and then update the status record. Track 1 replacement was accepted on 7 September as submission 2, with 100.0 rank points and F-max 1.000. Track 2 remains unsubmitted.
 
 ## Acknowledgement
 

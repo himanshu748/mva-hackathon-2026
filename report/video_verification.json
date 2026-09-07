@@ -1,22 +1,26 @@
 {
-  "programs": [],
-  "stream_groups": [],
-  "streams": [
-    {
-      "codec_name": "h264",
-      "width": 1920,
-      "height": 1080
-    },
-    {
-      "codec_name": "aac"
-    }
+  "checked_on": "2026-09-07",
+  "scope": "local final file only; hosted upload not verified",
+  "duration_seconds": 161,
+  "width": 1920,
+  "height": 1080,
+  "codec": "h264",
+  "video_frames": 4830,
+  "audio_track": false,
+  "spoken_words": 0,
+  "slide_count": 9,
+  "slide_durations_seconds": [
+    12,
+    18,
+    15,
+    16,
+    18,
+    20,
+    22,
+    16,
+    24
   ],
-  "format": {
-    "duration": "150.266667"
-  },
-  "sha256": "a14757db20aba72c1deeb222673025bd2265f426bbe3dfbad81157e48a20a17b",
-  "tts": "Deepgram Aura 2 Thalia",
-  "training_opt_out": true,
-  "stt_check": "Nova 3 round-trip reviewed; critical limitations and candidate names present",
-  "scope": "Local media validation; no upload or submission implied"
+  "full_acknowledgement": true,
+  "sha256": "d2fa48f9cd1e973319bbb297b03ea319604292be321e45d7c506a4f6f541de07",
+  "external_speech_request_for_this_cut": false
 }

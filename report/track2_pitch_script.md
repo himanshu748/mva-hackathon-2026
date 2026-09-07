@@ -1,10 +1,10 @@
-# Track 2 pitch narration
+# Track 2 pitch: silent final cut and optional narration
 
-Revised 7 September 2026. Rendered duration: 2:30.27; 1920×1080 H.264/AAC. Research proposal; no treatment recommendation. Deepgram Aura 2 Thalia with per-request model-improvement opt-out.
+Revision 2, 7 September 2026. The final cut is silent at the participant's request. Nine slides are held for 12, 18, 15, 16, 18, 20, 22, 16 and 24 seconds (161 seconds total). The final slide displays the full acknowledgement. The text below is optional narration retained as an explanatory script; it is not spoken in the submitted cut. Research proposal; no clinical regimen.
 
 ## Slide 1
 
-Our proposal starts with a child with mosaic variegated aneuploidy and a family who shared their data for research. We identified two candidate variants in bub one bee. We propose testing whether selective removal of senescent cells could reduce tissue damage.
+Our proposal concerns a child with mosaic variegated aneuploidy and a family who shared their data for research. We identified two candidate variants in bub one bee. We propose testing whether selective removal of senescent cells can improve tissue function without adding harm.
 
 ## Slide 2
 
@@ -12,7 +12,7 @@ The original analysis checked known disease genes first. A later genome wide ran
 
 ## Slide 3
 
-We tested how much the ranking depends on our choices. We varied the scoring weights and tested the gene exclusions. Both candidates stayed in the top three across one hundred and sixty two runs. This supports ranking stability within this case. It is not independent validation.
+Both candidates stayed in the top three across one hundred and sixty two scoring and gene exclusion settings. This supports stability within this case. It is not independent validation. Our next question is whether the proposed drug combination deserves further investigation.
 
 ## Slide 4
 
@@ -24,12 +24,12 @@ The strongest supporting experiment is a mouse study. Genetic removal of senesce
 
 ## Slide 6
 
-We propose testing dasatinib and quercetin to remove senescent cells. Small adult studies provide early biomarker and feasibility evidence. Dasatinib has pediatric leukemia approvals, but those approvals do not establish safety for this combination or for this disease. We propose no pediatric treatment schedule.
+We propose testing dasatinib and quercetin to remove senescent cells. Adult studies provide early evidence, but a randomized bone study missed its primary endpoint. Dasatinib has specific pediatric leukemia approvals. Neither those approvals nor the adult studies establish safety or efficacy in this disease.
 
 ## Slide 7
 
-The key experiment compares patient cells with matched controls, testing each drug alone and the combination. We would measure selective cell killing, tissue function, and chromosome instability. Growth toxicity and cancer risk are central concerns. Intermittent exposure has not been shown to resolve them.
+A twenty twenty six study found myelin damage in mice without obvious cell death. That changes our test plan. We would compare each drug and the combination, measuring tissue function and neural differentiation as well as selective killing. We must also check whether surviving cells become more unstable.
 
 ## Slide 8
 
-We would stop if there is no reproducible senescent burden, no selective clearance, or increased instability in surviving cells. This is a preclinical research proposal, with explicit failure criteria. Thank you to the child, family, and organizers who made the work possible.
+We would stop if target burden is absent, healthy tissue function worsens, or chromosome instability increases. The combination must offer an advantage over its components. This is a preclinical proposal with open methods and explicit failure criteria. Thank you to the child, family, and organizers.

@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 os.chdir(ROOT)
-for line in (ROOT / ".env").read_text().splitlines():
+for line in ((ROOT / ".env").read_text().splitlines() if (ROOT / ".env").exists() else []):
     if "=" in line and not line.startswith("#"):
         k, v = line.split("=", 1)
         os.environ.setdefault(k.strip(), v.strip())
@@ -18,11 +18,12 @@ for line in (ROOT / ".env").read_text().splitlines():
 AUDIO = ROOT / "out" / "pitch" / "narration.wav"
 # Phrases a judge has to come away with, as they should sound in the transcript.
 MUST_HEAR = [
-    ("bub1b", "bub one b"), "phase remains unknown", "functional testing",
+    ("bub1b", "bub one b", "bub one bee"), "phase remains unknown", "functional testing",
     "not independent validation", "spindle assembly checkpoint", "senescent",
-    "dasatinib", "scoring weights", "gene exclusions", "quercetin", "no pediatric treatment schedule", "selective", "instability",
-    "preclinical research proposal",
+    "dasatinib", "quercetin", "primary endpoint", "myelin", "tissue function",
+    "neural differentiation", "selective", "instability", "preclinical proposal",
 ]
+
 # Mispronunciations seen in earlier renders. Any of these means a regression.
 MUST_NOT_HEAR = ["one byte", "anaplasm", "feta type", "break slabs", "dasenib",
                  "sat ninety", "day is that", "mildomyo", "fnax", "acetolytic"]

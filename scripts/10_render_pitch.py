@@ -6,11 +6,12 @@ synthesised per slide, and each slide is held on screen for exactly the length
 of its own narration plus a short tail.
 
 Narration engine is swappable via --engine:
-  say       macOS built-in (default; free, offline, no API key)
+  none      silent reading-time slides (default; no API key)
+  say       macOS built-in (free, offline, no API key)
   deepgram  Deepgram Aura (higher quality; needs DEEPGRAM_API_KEY)
 
 Usage:
-    python3 scripts/10_render_pitch.py                 # local voice
+    python3 scripts/10_render_pitch.py                 # silent pitch
     DEEPGRAM_API_KEY=... python3 scripts/10_render_pitch.py --engine deepgram
 """
 from __future__ import annotations
@@ -41,18 +42,19 @@ PORT = 8749
 # One entry per slide, in order. Text is what gets spoken; it must stay in sync
 # with report/track2_pitch_script.md.
 NARRATION = [
-    "Our proposal starts with a child with mosaic variegated aneuploidy and a family who shared their data for research. We identified two candidate variants in bub one bee. We propose testing whether selective removal of senescent cells could reduce tissue damage.",
+    "Our proposal concerns a child with mosaic variegated aneuploidy and a family who shared their data for research. We identified two candidate variants in bub one bee. We propose testing whether selective removal of senescent cells can improve tissue function without adding harm.",
     "The original analysis checked known disease genes first. A later genome wide ranking placed both candidates in the top three. Track one received one hundred rank points. The stop variant predicts loss of function. The missense variant needs functional testing, and their phase remains unknown.",
-    "We tested how much the ranking depends on our choices. We varied the scoring weights and tested the gene exclusions. Both candidates stayed in the top three across one hundred and sixty two runs. This supports ranking stability within this case. It is not independent validation.",
+    "Both candidates stayed in the top three across one hundred and sixty two scoring and gene exclusion settings. This supports stability within this case. It is not independent validation. Our next question is whether the proposed drug combination deserves further investigation.",
     "Bub are one helps the spindle assembly checkpoint restrain chromosome separation. Its dysfunction can cause errors in chromosome separation. Our therapeutic hypothesis concerns a possible downstream consequence: persistent senescent cells and their inflammatory signals. Whether this patient has a harmful senescent cell burden still needs measurement.",
     "The strongest supporting experiment is a mouse study. Genetic removal of senescent cells delayed selected aging related problems in bub are one deficient mice. That establishes a mechanism worth testing. It does not establish that drugs reproduce the result, or that the result transfers to this child.",
-    "We propose testing dasatinib and quercetin to remove senescent cells. Small adult studies provide early biomarker and feasibility evidence. Dasatinib has pediatric leukemia approvals, but those approvals do not establish safety for this combination or for this disease. We propose no pediatric treatment schedule.",
-    "The key experiment compares patient cells with matched controls, testing each drug alone and the combination. We would measure selective cell killing, tissue function, and chromosome instability. Growth toxicity and cancer risk are central concerns. Intermittent exposure has not been shown to resolve them.",
-    "We would stop if there is no reproducible senescent burden, no selective clearance, or increased instability in surviving cells. This is a preclinical research proposal, with explicit failure criteria. Thank you to the child, family, and organizers who made the work possible."
+    "We propose testing dasatinib and quercetin to remove senescent cells. Adult studies provide early evidence, but a randomized bone study missed its primary endpoint. Dasatinib has specific pediatric leukemia approvals. Neither those approvals nor the adult studies establish safety or efficacy in this disease.",
+    "A twenty twenty six study found myelin damage in mice without obvious cell death. That changes our test plan. We would compare each drug and the combination, measuring tissue function and neural differentiation as well as selective killing. We must also check whether surviving cells become more unstable.",
+    "We would stop if target burden is absent, healthy tissue function worsens, or chromosome instability increases. The combination must offer an advantage over its components. This is a preclinical proposal with open methods and explicit failure criteria. Thank you to the child, family, and organizers.",
+    ""
 ]
 
 TAIL = 0.6          # seconds of silence held after each slide's narration
-TARGET_SECONDS = 176   # aim for 2:54. Higher than it needs to be on purpose: forcing
+TARGET_SECONDS = 176   # aim for 2:56. Higher than it needs to be on purpose: forcing
                        # a large atempo speed-up measurably degrades intelligibility of
                        # the long clinical terms, so take the runtime over the clarity.
 # Deepgram voice: thalia. Chosen by measurement, not taste. vesta (119 wpm) is the most
@@ -113,9 +115,30 @@ def tts_deepgram(text: str, dest: Path) -> None:
     raw.unlink()
 
 
+def render_silent() -> None:
+    """Encode fixed frame counts per slide, then concatenate without an audio track."""
+    durations = [12, 18, 15, 16, 18, 20, 22, 16, 24]
+    for n, seconds in enumerate(durations, 1):
+        sh(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "30",
+            "-i", str(BUILD / f"slide{n:02d}.png"), "-frames:v", str(seconds * 30),
+            "-vf", "pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=0x0d1117,format=yuv420p",
+            "-c:v", "libx264", "-preset", "fast", "-tune", "stillimage", "-crf", "20",
+            "-an", str(BUILD / f"silent{n:02d}.mp4")])
+    (BUILD / "silent.txt").write_text("".join(f"file 'silent{n:02d}.mp4'\n" for n in range(1, 10)))
+    out = ROOT / "report" / "HIMANSHUKUMARJHA_track2_pitch.mp4"
+    sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i",
+        "silent.txt", "-c", "copy", "-movflags", "+faststart", str(out)], cwd=BUILD)
+    final = duration(out)
+    if abs(final - sum(durations)) > 0.1 or final > 180:
+        sys.exit(f"FAIL: silent pitch duration {final}")
+    (BUILD / "render_metadata.json").write_text(json.dumps({"engine": "none", "external_speech_request": False,
+        "durations": durations, "spoken_words": 0, "audio_track": False}, indent=2))
+    print(f"Silent pitch verified: {final:.3f}s; no audio track.")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--engine", choices=["say", "deepgram"], default="say")
+    ap.add_argument("--engine", choices=["none", "say", "deepgram"], default="none")
     ap.add_argument("--skip-capture", action="store_true", help="Use previously captured slide PNGs")
     ap.add_argument("--reuse-audio", action="store_true", help="Reuse audio only when saved text matches")
     args = ap.parse_args()
@@ -153,11 +176,19 @@ def main() -> None:
             if not (BUILD / f"slide{n:02d}.png").is_file():
                 sys.exit(f"Missing slide {n}")
 
+    if args.engine == "none":
+        render_silent()
+        return
+
     print(f"Synthesising narration with engine={args.engine}")
     synth = tts_say if args.engine == "say" else tts_deepgram
     durations = []
     for n, text in enumerate(NARRATION, 1):
         wav = BUILD / f"vo{n:02d}.wav"
+        if not text:
+            sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", "12", str(wav)])
+            durations.append(12.0)
+            continue
         text_path = wav.with_suffix(".text")
         if not (args.reuse_audio and wav.exists() and text_path.exists() and text_path.read_text() == text):
             synth(text, wav)
@@ -210,11 +241,11 @@ def main() -> None:
         "-i", "narration.wav",
         "-t", f"{audio_len:.3f}",
         "-c:v", "libx264", "-preset", "medium", "-crf", "20",
-        "-vf", "pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=0x0d1117",
+        "-vf", "pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=0x0d1117,tpad=stop_mode=clone:stop_duration=5",
         "-pix_fmt", "yuv420p", "-r", "30",
         "-c:a", "aac", "-b:a", "192k", str(out)], cwd=BUILD)
 
-    (BUILD / "render_metadata.json").write_text(json.dumps({"engine": args.engine, "mip_opt_out": args.engine == "deepgram", "durations": durations, "spoken_words": sum(len(t.split()) for t in NARRATION)}, indent=2))
+    (BUILD / "render_metadata.json").write_text(json.dumps({"engine": args.engine, "mip_opt_out": args.engine == "deepgram", "durations": durations, "spoken_words": 0 if args.engine == "none" else sum(len(t.split()) for t in NARRATION)}, indent=2))
     final = duration(out)
     v = sh(["ffprobe", "-v", "error", "-select_streams", "v",
             "-show_entries", "stream=duration", "-of", "csv=p=0", str(out)]).stdout.strip()
