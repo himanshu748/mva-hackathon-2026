@@ -6,7 +6,7 @@ still gets credit for the proband's "Rhabdomyosarcoma".
 import os, sys as _s; os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))  # run from repo root
 import collections, json, math, pickle
 
-PROBAND_HPO = {
+DEFAULT_HPO = {
     "HP:0002859": "Rhabdomyosarcoma",
     "HP:0000121": "Nephrocalcinosis",
     "HP:0004322": "Short stature",
@@ -16,6 +16,18 @@ PROBAND_HPO = {
     "HP:0001518": "Small for gestational age",
     "HP:0200067": "Recurrent spontaneous abortion",
 }
+
+import argparse
+from pathlib import Path
+from annotation_cache import digest
+ap = argparse.ArgumentParser()
+ap.add_argument("--hpo-file", type=Path, help="JSON list or object of HPO IDs")
+args = ap.parse_args()
+PROBAND_HPO = json.loads(args.hpo_file.read_text()) if args.hpo_file else DEFAULT_HPO
+if not PROBAND_HPO or not isinstance(PROBAND_HPO, (list, dict)):
+    raise ValueError("HPO profile must be a nonempty list or object")
+if any(not isinstance(t,str) or len(t)!=10 or not t.startswith("HP:") or not t[3:].isdigit() for t in PROBAND_HPO):
+    raise ValueError("Invalid HPO ID")
 
 # --- parse ontology ---
 parents, obsolete = collections.defaultdict(set), set()
@@ -56,7 +68,7 @@ N = len(gene_terms)
 IC = {t: -math.log(c / N) for t, c in freq.items() if c > 0}
 
 def resnik(pt, gene):
-    """Best-match-average Resnik: for each proband term, the most informative
+    """Patient-to-gene best-match mean Resnik: for each proband term, the most informative
     common ancestor shared with any of the gene's annotated terms."""
     ga = set()
     for t in gene_terms[gene]: ga |= ancestors(t)
@@ -79,3 +91,8 @@ print(f"\nBUB1B phenotype rank: {bub[0]} of {len(ranked):,}  (score {scores['BUB
 for g in ("CEP57", "TRIP13"):
     r = [i for i, (x, _) in enumerate(ranked, 1) if x == g]
     print(f"{g} phenotype rank: {r[0] if r else 'n/a'}  (score {scores.get(g, 0):.3f})")
+
+json.dump({"hpo_ids": sorted(PROBAND_HPO),
+    "references": {n:digest(Path("ref")/n) for n in ["hp.obo","genes_to_phenotype.txt"]},
+    "scores_sha256":digest("out/pheno_scores.pkl")},
+    open("out/pheno_manifest.json","w"),indent=2)

@@ -19,8 +19,8 @@ command -v bcftools >/dev/null || { echo "bcftools not found (brew install bcfto
 echo "Total records in VCF: $(bcftools index --nrecords "$VCF" 2>/dev/null || bcftools view -H "$VCF" | wc -l)"
 
 echo "Extracting coding variants (PASS, DP>=10, GQ>=30)..."
-bcftools view -H -f PASS -R ref/cds.bed -i 'FMT/DP>=10 && FMT/GQ>=30' "$VCF" \
-  | awk -F'\t' -v OFS='\t' '{split($10,a,":"); print $1,$2,$4,$5,a[1],a[2],a[3]}' \
+bcftools query -f '%CHROM\t%POS\t%REF\t%ALT[\t%GT\t%AD\t%DP]\n' \
+  -R ref/cds.bed -i 'FILTER="PASS" && FMT/DP>=10 && FMT/GQ>=30' "$VCF" \
   > out/coding_pass.tsv
 echo "  out/coding_pass.tsv: $(wc -l < out/coding_pass.tsv) variants"
 

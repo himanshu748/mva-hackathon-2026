@@ -1,0 +1,22 @@
+{
+  "programs": [],
+  "stream_groups": [],
+  "streams": [
+    {
+      "codec_name": "h264",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "codec_name": "aac"
+    }
+  ],
+  "format": {
+    "duration": "150.266667"
+  },
+  "sha256": "a14757db20aba72c1deeb222673025bd2265f426bbe3dfbad81157e48a20a17b",
+  "tts": "Deepgram Aura 2 Thalia",
+  "training_opt_out": true,
+  "stt_check": "Nova 3 round-trip reviewed; critical limitations and candidate names present",
+  "scope": "Local media validation; no upload or submission implied"
+}

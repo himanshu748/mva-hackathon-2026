@@ -5,7 +5,7 @@ Text to speech mangles domain vocabulary silently: Deepgram rendered "BUB1B" as
 transcribe it back with Deepgram speech to text and assert that the terms a judge
 must hear actually survived.
 """
-import json, os, subprocess, sys
+import json, os, subprocess, sys, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -18,18 +18,10 @@ for line in (ROOT / ".env").read_text().splitlines():
 AUDIO = ROOT / "out" / "pitch" / "narration.wav"
 # Phrases a judge has to come away with, as they should sound in the transcript.
 MUST_HEAR = [
-    ("bub1b", "bub one b"), # the gene; STT writes the spoken form either way
-    "compound heterozygous",
-    "nonsense allele",
-    "hypomorph",
-    "spindle assembly checkpoint",
-    "senescent",
-    "quercetin" ,
-    "growth failure",
-    "hypothesis is dead",
-    "fourteenth",
-    "tinib",                # dasatinib must at least land as a -tinib drug
-    "lytic",                # senolytic must survive
+    ("bub1b", "bub one b"), "phase remains unknown", "functional testing",
+    "not independent validation", "spindle assembly checkpoint", "senescent",
+    "dasatinib", "scoring weights", "gene exclusions", "quercetin", "no pediatric treatment schedule", "selective", "instability",
+    "preclinical research proposal",
 ]
 # Mispronunciations seen in earlier renders. Any of these means a regression.
 MUST_NOT_HEAR = ["one byte", "anaplasm", "feta type", "break slabs", "dasenib",
@@ -39,13 +31,12 @@ MUST_NOT_HEAR = ["one byte", "anaplasm", "feta type", "break slabs", "dasenib",
 mp3 = AUDIO.with_suffix(".mp3")
 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(AUDIO),
                 "-b:a", "96k", str(mp3)], check=True)
-res = subprocess.run([
-    "curl", "-sS", "-X", "POST",
-    "https://api.deepgram.com/v1/listen?model=nova-3&punctuate=true&smart_format=true",
-    "-H", f"Authorization: Token {os.environ['DEEPGRAM_API_KEY']}",
-    "-H", "Content-Type: audio/mpeg",
-    "--data-binary", f"@{mp3}"], capture_output=True, text=True, check=True)
-d = json.loads(res.stdout)
+req = urllib.request.Request(
+    "https://api.deepgram.com/v1/listen?model=nova-3&punctuate=true&smart_format=true&mip_opt_out=true",
+    data=mp3.read_bytes(),
+    headers={"Authorization": f"Token {os.environ['DEEPGRAM_API_KEY']}", "Content-Type": "audio/mpeg"})
+with urllib.request.urlopen(req, timeout=120) as response:
+    d = json.load(response)
 alt = d["results"]["channels"][0]["alternatives"][0]
 text = alt["transcript"].lower()
 

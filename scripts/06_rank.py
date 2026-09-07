@@ -1,18 +1,18 @@
-"""Blind genome-wide causal variant ranking.
-
-Combines four orthogonal, independently computed axes:
-  1. Predicted molecular impact   (VEP consequence tier + SIFT/PolyPhen)
-  2. Population rarity            (gnomAD exome/genome AF)
-  3. Phenotype match              (Resnik similarity of the gene's HPO profile
-                                   to the proband's 8 terms; see 05_phenotype.py)
-  4. Inheritance model fit        (biallelic: homozygous, or two rare damaging
-                                   heterozygous hits in the same gene)
-
-No MVA gene list is used anywhere. BUB1B is not referenced in this script.
+"""Genome-wide retrospective ranking; design was informed by earlier targeted analysis.
+The score has no candidate-gene bonus. This is not a blinded validation study.
 """
 import os, sys as _s; os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))  # run from repo root
 import glob, json, math, pickle, collections
 
+from pathlib import Path
+from annotation_cache import validate_cache, digest
+validate_cache(Path.cwd())
+pheno_meta = json.load(open("out/pheno_manifest.json"))
+for name, expected in pheno_meta["references"].items():
+    if digest(Path("ref") / name) != expected:
+        raise ValueError("Phenotype references changed; rerun 05_phenotype.py")
+if digest("out/pheno_scores.pkl") != pheno_meta["scores_sha256"]:
+    raise ValueError("Phenotype scores do not match their manifest")
 PHENO = pickle.load(open("out/pheno_scores.pkl", "rb"))
 AF_MAX = 1e-3          # a biallelic disease allele should be rare
 HIGH = {"transcript_ablation","splice_acceptor_variant","splice_donor_variant",
@@ -65,11 +65,11 @@ for part in sorted(glob.glob("out/vep_parts/*.json")):
                             pheno=PHENO.get(gene, 0.0)))
 
 # --- QC: drop alignment-artefact hotspots -------------------------------
-# A single individual cannot genuinely carry many rare damaging alleles in one
-# small gene. Dense stacks of "rare damaging" calls mark mismapping in
-# segmental duplications and hyperpolymorphic loci (HLA, SERPINA1 cluster).
+# Heuristic exclusion, chosen after inspecting this case. It is not proof of
+# mismapping. See the report and QC/weight sensitivity analysis.
 by_gene = collections.defaultdict(list)
 for r in records: by_gene[r["gene"]].append(r)
+pre_qc_records = records.copy()
 MAX_ALLELES = 4
 artefact = {g for g, rs in by_gene.items() if len(rs) > MAX_ALLELES}
 artefact |= {g for g in by_gene if g and (g.startswith("HLA-") or g.startswith("MUC"))}
@@ -83,7 +83,7 @@ by_gene = collections.defaultdict(list)
 for r in records: by_gene[r["gene"]].append(r)
 for gene, rs in by_gene.items():
     hom = [r for r in rs if r["gt"] in ("1/1", "1|1")]
-    het = [r for r in rs if r["gt"] in ("0/1", "0|1", "1|0")]
+    het = [r for r in rs if r["gt"] in ("0/1", "1/0", "0|1", "1|0")]
     for r in rs:
         if r["gt"] in ("1/1", "1|1"):
             r["model"], r["model_note"] = 1.0, "homozygous"
@@ -105,15 +105,6 @@ for i, r in enumerate(records[:20], 1):
     print(f"{i:<4}{str(r['gene']):<11}{r['score']:<8.3f}{r['cons'][:25]:<26}{af:<10}{r['gt']:<6}{r['pheno']:<7.2f}{r['model_note'][:38]}")
     if r["hgvsp"]: print(f"    {r['input'].split(' . ')[0]}  {r['hgvsp'].split(':')[-1]}")
 
-# ---------------------------------------------------------------------------
-# POST-HOC REPORTING ONLY. Everything above this line is blind: the ranking is
-# already computed, sorted and written to disk. The two coordinates below are
-# hardcoded solely to print where the finally reported variants landed, so the
-# rank can be quoted in the report. They are read after the fact and have no
-# influence whatsoever on filtering, scoring or ordering. Delete this block and
-# the ranking output is byte-for-byte identical.
-# ---------------------------------------------------------------------------
-print("\n--- where did the two reported variants land? (post-hoc lookup) ---")
-for i, r in enumerate(records, 1):
-    if r["input"].startswith("15 40209701") or r["input"].startswith("15 40220612"):
-        print(f"  rank {i} of {len(records):,}: {r['gene']} {r['hgvsp'].split(':')[-1]} score={r['score']:.3f}")
+# Export the full candidate set locally for QC sensitivity analysis. No genomic
+# tables are committed or uploaded with the repository.
+json.dump(pre_qc_records, open("out/ranking_pre_qc.json", "w"), indent=1)

@@ -1,0 +1,8 @@
+{
+  "check": "CSV/VCF and candidate-based scoring self-check; not organizer answer-key validation",
+  "candidate_count": 2,
+  "rank_points": 100.0,
+  "f_max": 1.0,
+  "csv_sha256": "8803c55fd6cacb41976726cfaf26ad565997cc614f3588133efff8d219cd9a3c",
+  "evaluator_revision": "1c761cc23d90aebe6a011fd5b0b99517df42408c"
+}

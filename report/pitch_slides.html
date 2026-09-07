@@ -48,109 +48,14 @@
 </head>
 <body>
 
-<section class="slide on">
-  <h3>Rare Disease, Real Kid &middot; MVA Hackathon 2026</h3>
-  <h1>One child.<br>One genome.<br><span class="accent">One mechanism.</span></h1>
-  <p>Rhabdomyosarcoma &middot; growth failure &middot; nephrocalcinosis &middot; parental recurrent miscarriage</p>
-  <footer>1 / 8 &middot; 0:00</footer>
-</section>
-
-<section class="slide">
-  <h3>Track 1 &middot; blind pipeline</h3>
-  <div class="funnel mono">
-    <div><span class="n">5,012,204</span> variants in the VCF</div>
-    <div><span class="n">28,071</span> coding, high confidence</div>
-    <div><span class="n">229</span> rare and protein altering</div>
-    <div><span class="n">194</span> after artefact QC</div>
-    <div><span class="n last">1</span> <span class="good">BUB1B</span></div>
-  </div>
-  <div class="row">
-    <div class="card"><div class="k">Allele 1</div>
-      <div class="v">p.Leu737Ter<br><span class="warn">true null</span></div></div>
-    <div class="card"><div class="k">Allele 2</div>
-      <div class="v">p.Asn1002Lys<br><span class="accent">hypomorph</span></div></div>
-    <div class="card"><div class="k">Score</div>
-      <div class="v good">100 / 100<br>F-max 1.000</div></div>
-  </div>
-  <footer>2 / 8 &middot; 0:20</footer>
-</section>
-
-<section class="slide">
-  <h3>Phenotype alone, no genetic data</h3>
-  <h2>The clinical terms pointed at the gene<br>before we opened the VCF.</h2>
-  <div>
-    <div class="rank"><span class="pos">12</span><span class="g mono">PTH1R</span></div>
-    <div class="rank"><span class="pos">13</span><span class="g mono">RPS19</span></div>
-    <div class="rank me"><span class="pos">14</span><span class="g mono">BUB1B</span><span>of 5,268 genes</span></div>
-    <div class="rank"><span class="pos">15</span><span class="g mono">CEP57</span><span style="color:var(--line)">also an MVA gene</span></div>
-    <div class="rank"><span class="pos">62</span><span class="g mono">TRIP13</span><span style="color:var(--line)">also an MVA gene</span></div>
-  </div>
-  <footer>3 / 8 &middot; 0:48</footer>
-</section>
-
-<section class="slide">
-  <h3>Mechanism</h3>
-  <div class="chain mono">
-    <div>BUB1B null + hypomorph</div>
-    <div><span class="arrow">&rarr;</span> reduced BUBR1 dosage</div>
-    <div><span class="arrow">&rarr;</span> spindle assembly checkpoint slips</div>
-    <div><span class="arrow">&rarr;</span> chromosomes missegregate <span style="color:var(--line)">(the variegated aneuploidy)</span></div>
-    <div><span class="arrow">&rarr;</span> aneuploidy stress and DNA damage</div>
-    <div><span class="arrow">&rarr;</span> <span class="hit">senescent cells accumulate + SASP</span></div>
-    <div><span class="arrow">&rarr;</span> tissue failure, growth restriction, tumour-promoting niche</div>
-  </div>
-  <p class="kicker">You cannot drug a missing allele. You can drug that.</p>
-  <footer>4 / 8 &middot; 1:03</footer>
-</section>
-
-<section class="slide">
-  <h3>Causal, not correlative</h3>
-  <h2>The <span class="accent">BubR1 hypomorphic mouse</span> carries a lesion<br>in the same gene. Clear its senescent cells,<br>and the disease slows.</h2>
-  <div class="row">
-    <div class="card"><div class="k">Mouse signature phenotype</div>
-      <div class="v">Sarcopenia<br><span style="font-size:1.6vw;color:var(--dim)">muscle wasting</span></div></div>
-    <div class="card"><div class="k">This child, HP:0003202</div>
-      <div class="v good">Skeletal muscle atrophy<br><span style="font-size:1.6vw;color:var(--dim)">and failure to thrive</span></div></div>
-  </div>
-  <p class="kicker">Baker et al., Nature 479:232 (2011)</p>
-  <footer>5 / 8 &middot; 1:38</footer>
-</section>
-
-<section class="slide">
-  <h3>The proposal</h3>
-  <h1 style="font-size:4.4vw">Senolytics:<br><span class="accent">dasatinib + quercetin</span></h1>
-  <div class="row">
-    <div class="card"><div class="k">Pediatric status</div>
-      <div class="v">FDA approved<br><span style="font-size:1.6vw;color:var(--dim)">weight-based dosing exists</span></div></div>
-    <div class="card"><div class="k">Human evidence</div>
-      <div class="v">Senescent cells fall<br><span style="font-size:1.6vw;color:var(--dim)">first-in-human trials</span></div></div>
-    <div class="card"><div class="k">Exposure</div>
-      <div class="v">3 days / week<br><span style="font-size:1.6vw;color:var(--dim)">not continuous</span></div></div>
-  </div>
-  <footer>6 / 8 &middot; 2:00</footer>
-</section>
-
-<section class="slide">
-  <h3 style="color:var(--warn)">The problem with our own proposal</h3>
-  <h2>Dasatinib affects <span class="warn">growth in children</span>.<br>This child's presenting problem<br>is <span class="warn">growth failure</span>.</h2>
-  <ul>
-    <li><b>Our claim:</b> intermittent dosing changes the exposure profile.</li>
-    <li><b>Our evidence:</b> none yet. That is experiment 5.</li>
-    <li><b>Kill switch:</b> if patient cells show no senescent burden, the hypothesis is dead.</li>
-  </ul>
-  <footer>7 / 8 &middot; 2:22</footer>
-</section>
-
-<section class="slide">
-  <h3>Beyond one child</h3>
-  <h2>Chromosomal instability disorders<br>converge on the <span class="accent">same node</span>.</h2>
-  <p><span class="mono">CEP57</span> &middot; <span class="mono">TRIP13</span> &middot; DNA repair and CIN disorders broadly.
-     Pipeline: 30 minutes, one laptop, zero cost, no local annotation cache.</p>
-  <p class="mono" style="font-size:1.8vw;color:var(--accent);margin-top:3vh">github.com/himanshu748/mva-hackathon-2026</p>
-  <p class="kicker">Thank you to the child and family who shared their genome.</p>
-  <footer>8 / 8 &middot; 2:42</footer>
-</section>
-
+<section class="slide on"><h3>Rare Disease, Real Kid · MVA Hackathon 2026</h3><h1>Testing senescent<br>cell clearance<br><span class="accent">in BUB1B-related MVA</span></h1><p>Dasatinib + quercetin · A preclinical research proposal</p><footer>1 / 8</footer></section>
+<section class="slide"><h3>Track 1 · retrospective prioritisation</h3><h2>Two BUB1B candidates<br>ranked first and third.</h2><div class="row"><div class="card"><div class="k">p.Leu737Ter</div><div class="v">Predicted loss<br>of function</div></div><div class="card"><div class="k">p.Asn1002Lys</div><div class="v">Functional effect<br>unconfirmed</div></div><div class="card"><div class="k">Organizer score</div><div class="v good">100 points<br>F-max 1.000</div></div></div><p style="margin-top:3vh">Known genes were checked first. Phase remains unproven.</p><footer>2 / 8</footer></section>
+<section class="slide"><h3>Sensitivity within this case</h3><h1 class="accent">162 / 162</h1><h2>Both candidates remain in the top three.</h2><p>81 weight combinations × gene exclusions on / off.<br>Retrospective stability analysis; no held-out validation.</p><footer>3 / 8</footer></section>
+<section class="slide"><h3>Mechanistic hypothesis</h3><div class="chain"><div>BUB1B dysfunction</div><div>↓ chromosome segregation errors</div><div>↓ cellular stress</div><div class="hit">Persistent senescent cells + inflammatory signals?</div><div>↓ tissue damage?</div></div><p style="margin-top:3vh">Patient-specific senescence and treatment response are unmeasured.</p><footer>4 / 8</footer></section>
+<section class="slide"><h3>Evidence boundary</h3><h2>Genetic clearance helped<br>selected phenotypes in<br><span class="accent">BubR1-deficient mice.</span></h2><p>It does not establish drug efficacy or benefit in this child.</p><p class="kicker">Baker et al. · Nature · 2011</p><footer>5 / 8</footer></section>
+<section class="slide"><h3>Candidate combination</h3><h1 style="font-size:4.4vw">Dasatinib<br><span class="accent">+ quercetin</span></h1><div class="row"><div class="card"><div class="k">Early evidence</div><div class="v">Small adult trials</div></div><div class="card"><div class="k">Pediatric approval</div><div class="v">Dasatinib for<br>specific leukemias</div></div><div class="card"><div class="k">For MVA</div><div class="v warn">Unproven efficacy<br>and safety</div></div></div><p class="kicker">Hickson 2019 · Justice 2019 · Nambiar 2023 · FDA dasatinib label</p><footer>6 / 8</footer></section>
+<section class="slide"><h3>Decisive preclinical experiment</h3><h2>Patient cells + matched controls.<br>Single drugs + combination.</h2><ul><li><b>Measure:</b> selective killing, function, chromosome instability.</li><li><b>Risks:</b> growth toxicity, marrow toxicity, cancer risk.</li><li><b>Unresolved:</b> whether intermittent exposure improves safety.</li></ul><footer>7 / 8</footer></section>
+<section class="slide"><h3>Stop criteria</h3><h2>No senescent burden.<br>No selective clearance.<br><span class="warn">More unstable surviving cells.</span></h2><p>Any of these results would undermine the proposal.</p><p class="mono" style="font-size:1.5vw;color:var(--accent);margin-top:3vh">github.com/himanshu748/mva-hackathon-2026</p><p class="kicker">Thank you to the child, family, and organizers.</p><footer>8 / 8</footer></section>
 <script>
   // Ensure key events reach the page even if the window was opened unfocused.
   document.body.tabIndex = -1;

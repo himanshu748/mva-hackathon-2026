@@ -1,0 +1,60 @@
+{
+  "scope": "post-hoc within-case sensitivity; no held-out cases",
+  "target_gene": "BUB1B",
+  "baseline_qc_ranks": [
+    1,
+    3
+  ],
+  "baseline_no_qc_ranks": [
+    1,
+    3
+  ],
+  "weight_grid": [
+    {
+      "qc": true,
+      "settings": 81,
+      "first_target_rank_range": [
+        1,
+        1
+      ],
+      "second_target_rank_range": [
+        2,
+        3
+      ],
+      "both_in_top3": 81,
+      "both_in_top10": 81
+    },
+    {
+      "qc": false,
+      "settings": 81,
+      "first_target_rank_range": [
+        1,
+        1
+      ],
+      "second_target_rank_range": [
+        2,
+        3
+      ],
+      "both_in_top3": 81,
+      "both_in_top10": 81
+    }
+  ],
+  "single_axis_ablation": {
+    "impact": [
+      1,
+      3
+    ],
+    "rarity": [
+      1,
+      2
+    ],
+    "phenotype": [
+      3,
+      6
+    ],
+    "inheritance": [
+      1,
+      3
+    ]
+  }
+}

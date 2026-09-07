@@ -8,7 +8,9 @@ mkdir -p data out ref out/vep_parts
 
 fetch () {  # url, destination
   if [ -s "$2" ]; then echo "  have $(basename "$2")"; else
-    echo "  fetching $(basename "$2")"; curl -sL -o "$2" "$1"
+    echo "  fetching $(basename "$2")"
+    curl --fail --silent --show-error --location --retry 3 -o "$2.part" "$1"
+    mv "$2.part" "$2"
   fi
 }
 

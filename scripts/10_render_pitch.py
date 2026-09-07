@@ -1,6 +1,6 @@
 """Render the Track 2 pitch video: slides + narration -> MP4.
 
-Fully deterministic and rerunnable. Slide stills are captured from
+Rerunnable; remote speech output can vary between requests. Slide stills are captured from
 report/pitch_slides.html with headless Chromium at 1920x1080, narration is
 synthesised per slide, and each slide is held on screen for exactly the length
 of its own narration plus a short tail.
@@ -41,60 +41,24 @@ PORT = 8749
 # One entry per slide, in order. Text is what gets spoken; it must stay in sync
 # with report/track2_pitch_script.md.
 NARRATION = [
-    # Written as natural prose. Heavy phonetic respelling was tried and reverted: it fixed
-    # pronunciation but flattened the prosody and made the delivery sound robotic. The only
-    # respellings kept are the two gene names, written the way a geneticist says them aloud
-    # ("bub one bee", "bub are one"), which is both clearer and more natural than the
-    # letter-by-letter reading the engine defaults to.
-    # Verify any edit with scripts/11_check_narration.py.
-    "A child with rhabdomyosarcoma, growth failure, and a family history of recurrent "
-    "miscarriage. Fewer than fifty people worldwide share his condition. His family opened "
-    "his genome to strangers. This is what we found, and what can be done about it.",
-
-    "Our pipeline is blind. No gene panel, no disease hypothesis. Five million variants, "
-    "filtered to one hundred and ninety four, ranked on four independent axes. "
-    "Top of that list: compound heterozygous bub one bee. A nonsense allele that triggers "
-    "decay, so a true null. In trans with a final exon missense that escapes it, so a "
-    "hypomorph. One hundred out of one hundred. F-max, one point zero.",
-
-    "Here is the part that convinced us it was real. Scored on the eight clinical terms "
-    "alone, with no genetic data whatsoever, bub one bee ranks fourteenth out of five "
-    "thousand two hundred and sixty eight genes. The clinical picture pointed at the gene "
-    "before we looked at a single variant.",
-
-    "Bub are one runs the spindle assembly checkpoint. It holds the cell at anaphase "
-    "until every chromosome is attached. Halve that dose and the brake slips: anaphase "
-    "starts early, and chromosomes are pulled apart wrongly. That is the variegated "
-    "aneuploidy. "
-    "But the therapeutic question is what happens to those unstable cells. They accumulate "
-    "damage and turn senescent, pumping inflammatory signals into the tissue. You cannot "
-    "drug a missing allele. You can drug that.",
-
-    "And this is not speculation. The bub are one hypomorphic mouse carries a lesion in the "
-    "same gene. Clear its senescent cells, and the disease slows. That is causal, and it is "
-    "published in Nature. "
-    "The mouse's signature phenotype is muscle wasting. So is this child's.",
-
-    "So we propose senolytics: dasatinib, plus quercetin. "
-    "Dasatinib is already approved for children, with established dosing. The "
-    "combination has first in human data showing senescent cells actually fall. And it is "
-    "dosed three days a week, not every day.",
-
-    "Now the problem, and we would rather say it than have you find it. Dasatinib "
-    "affects growth in children, and this child's presenting problem is growth failure. We "
-    "think intermittent dosing resolves that. We have not shown it. "
-    "So that is the experiment. And if patient cells show no senescent burden, our "
-    "hypothesis is dead. We have said exactly how to kill it.",
-
-    "This is not really about one child. Chromosomal instability disorders converge on the "
-    "same node. The pipeline runs on a laptop in thirty minutes, for zero cost. Everything "
-    "is open.",
+    "Our proposal starts with a child with mosaic variegated aneuploidy and a family who shared their data for research. We identified two candidate variants in bub one bee. We propose testing whether selective removal of senescent cells could reduce tissue damage.",
+    "The original analysis checked known disease genes first. A later genome wide ranking placed both candidates in the top three. Track one received one hundred rank points. The stop variant predicts loss of function. The missense variant needs functional testing, and their phase remains unknown.",
+    "We tested how much the ranking depends on our choices. We varied the scoring weights and tested the gene exclusions. Both candidates stayed in the top three across one hundred and sixty two runs. This supports ranking stability within this case. It is not independent validation.",
+    "Bub are one helps the spindle assembly checkpoint restrain chromosome separation. Its dysfunction can cause errors in chromosome separation. Our therapeutic hypothesis concerns a possible downstream consequence: persistent senescent cells and their inflammatory signals. Whether this patient has a harmful senescent cell burden still needs measurement.",
+    "The strongest supporting experiment is a mouse study. Genetic removal of senescent cells delayed selected aging related problems in bub are one deficient mice. That establishes a mechanism worth testing. It does not establish that drugs reproduce the result, or that the result transfers to this child.",
+    "We propose testing dasatinib and quercetin to remove senescent cells. Small adult studies provide early biomarker and feasibility evidence. Dasatinib has pediatric leukemia approvals, but those approvals do not establish safety for this combination or for this disease. We propose no pediatric treatment schedule.",
+    "The key experiment compares patient cells with matched controls, testing each drug alone and the combination. We would measure selective cell killing, tissue function, and chromosome instability. Growth toxicity and cancer risk are central concerns. Intermittent exposure has not been shown to resolve them.",
+    "We would stop if there is no reproducible senescent burden, no selective clearance, or increased instability in surviving cells. This is a preclinical research proposal, with explicit failure criteria. Thank you to the child, family, and organizers who made the work possible."
 ]
 
 TAIL = 0.6          # seconds of silence held after each slide's narration
 TARGET_SECONDS = 176   # aim for 2:54. Higher than it needs to be on purpose: forcing
                        # a large atempo speed-up measurably degrades intelligibility of
                        # the long clinical terms, so take the runtime over the clarity.
+# Deepgram voice: thalia. Chosen by measurement, not taste. vesta (119 wpm) is the most
+# natural-sounding of the set but runs the script to 3:39, which needs a >1.15 atempo to
+# fit the 3:00 limit and reintroduces exactly the artifacts we were trying to remove.
+# The previous pitch used Thalia without tempo correction; measure each new render.
 SAY_VOICE = "Samantha"
 SAY_WPM = 145       # default `say` rate is ~186 wpm, too fast to follow
 
@@ -135,9 +99,9 @@ def tts_deepgram(text: str, dest: Path) -> None:
     if not key:
         sys.exit("DEEPGRAM_API_KEY is not set. Export it, or drop --engine deepgram "
                  "to use the local voice.")
-    model = os.environ.get("DEEPGRAM_VOICE", "aura-2-cora-en")
+    model = os.environ.get("DEEPGRAM_VOICE", "aura-2-thalia-en")
     req = urllib.request.Request(
-        f"https://api.deepgram.com/v1/speak?model={model}",
+        f"https://api.deepgram.com/v1/speak?model={model}&mip_opt_out=true",
         data=json.dumps({"text": text}).encode(),
         headers={"Authorization": f"Token {key}", "Content-Type": "application/json"},
     )
@@ -152,6 +116,8 @@ def tts_deepgram(text: str, dest: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--engine", choices=["say", "deepgram"], default="say")
+    ap.add_argument("--skip-capture", action="store_true", help="Use previously captured slide PNGs")
+    ap.add_argument("--reuse-audio", action="store_true", help="Reuse audio only when saved text matches")
     args = ap.parse_args()
 
     for tool in ("ffmpeg", "ffprobe"):
@@ -161,32 +127,41 @@ def main() -> None:
     BUILD.mkdir(parents=True, exist_ok=True)
     shutil.copy(SLIDES_HTML, BUILD / "pitch_slides.html")
 
-    server = subprocess.Popen([sys.executable, "-m", "http.server", str(PORT)],
-                              cwd=BUILD, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    try:
-        subprocess.run([sys.executable, "-c",
-                        "import time,urllib.request;"
-                        f"[time.sleep(.3) or urllib.request.urlopen('http://localhost:{PORT}/') "
-                        "for _ in range(1)]"], check=False)
+    if not args.skip_capture:
+        server = subprocess.Popen([sys.executable, "-m", "http.server", str(PORT)],
+                                  cwd=BUILD, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        try:
+            subprocess.run([sys.executable, "-c",
+                            "import time,urllib.request;"
+                            f"[time.sleep(.3) or urllib.request.urlopen('http://localhost:{PORT}/') "
+                            "for _ in range(1)]"], check=False)
 
-        cb = chromium()
-        print(f"Capturing {len(NARRATION)} slides at 1920x1080")
+            cb = chromium()
+            print(f"Capturing {len(NARRATION)} slides at 1920x1080")
+            for n in range(1, len(NARRATION) + 1):
+                png = BUILD / f"slide{n:02d}.png"
+                subprocess.run([cb, "--headless", "--disable-gpu", "--hide-scrollbars",
+                                f"--screenshot={png}", "--window-size=1920,1080",
+                                f"http://localhost:{PORT}/pitch_slides.html?s={n}"],
+                               check=True, capture_output=True)
+                print(f"  slide {n}")
+        finally:
+            server.terminate()
+
+    else:
         for n in range(1, len(NARRATION) + 1):
-            png = BUILD / f"slide{n:02d}.png"
-            subprocess.run([cb, "--headless", "--disable-gpu", "--hide-scrollbars",
-                            f"--screenshot={png}", "--window-size=1920,1080",
-                            f"http://localhost:{PORT}/pitch_slides.html?s={n}"],
-                           check=True, capture_output=True)
-            print(f"  slide {n}")
-    finally:
-        server.terminate()
+            if not (BUILD / f"slide{n:02d}.png").is_file():
+                sys.exit(f"Missing slide {n}")
 
     print(f"Synthesising narration with engine={args.engine}")
     synth = tts_say if args.engine == "say" else tts_deepgram
     durations = []
     for n, text in enumerate(NARRATION, 1):
         wav = BUILD / f"vo{n:02d}.wav"
-        synth(text, wav)
+        text_path = wav.with_suffix(".text")
+        if not (args.reuse_audio and wav.exists() and text_path.exists() and text_path.read_text() == text):
+            synth(text, wav)
+            text_path.write_text(text)
         d = duration(wav) + TAIL
         durations.append(d)
         words = len(text.split())
@@ -235,9 +210,11 @@ def main() -> None:
         "-i", "narration.wav",
         "-t", f"{audio_len:.3f}",
         "-c:v", "libx264", "-preset", "medium", "-crf", "20",
+        "-vf", "pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=0x0d1117",
         "-pix_fmt", "yuv420p", "-r", "30",
         "-c:a", "aac", "-b:a", "192k", str(out)], cwd=BUILD)
 
+    (BUILD / "render_metadata.json").write_text(json.dumps({"engine": args.engine, "mip_opt_out": args.engine == "deepgram", "durations": durations, "spoken_words": sum(len(t.split()) for t in NARRATION)}, indent=2))
     final = duration(out)
     v = sh(["ffprobe", "-v", "error", "-select_streams", "v",
             "-show_entries", "stream=duration", "-of", "csv=p=0", str(out)]).stdout.strip()

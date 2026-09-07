@@ -1,15 +1,11 @@
-"""Screen the ranked variants against the ACMG SF v3.2 actionable gene list.
-
-Reports candidate secondary/incidental findings for human review. Being in an
-ACMG gene is necessary but nowhere near sufficient for reporting, so this is a
-triage step, not a verdict: each hit still needs assessment against the
-gene-specific reporting criteria (e.g. TTN is actionable only for truncating
-variants, and predominantly A-band ones).
+"""Exploratory lookup in a historical configured secondary-gene set.
+Not a complete/current ACMG clinical secondary-findings screen. Filtering and
+transcript selection upstream can exclude actionable variants.
 """
 import os, sys as _s; os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))  # run from repo root
 import json
 
-# ACMG SF v3.2, 81 genes
+# Historical configured gene set; not asserted to be a complete ACMG release.
 ACMG = set("""ACTA2 ACTC1 ACVRL1 APC APOB ATP7B BAG3 BMPR1A BRCA1 BRCA2 BTD CACNA1S CALM1
 CALM2 CALM3 CASQ2 COL3A1 DES DSC2 DSG2 DSP ENG FBN1 FLNC GAA GLA HFE HNF1A KCNH2 KCNQ1
 LDLR LMNA MAX MEN1 MLH1 MSH2 MSH6 MUTYH MYBPC3 MYH11 MYH7 MYL2 MYL3 NF2 OTC PALB2 PCSK9
@@ -20,9 +16,9 @@ recs = json.load(open("out/ranked_top200.json"))
 hits = [r for r in recs if r["gene"] in ACMG]
 
 print(f"ranked variants screened: {len(recs)}")
-print(f"variants in ACMG SF v3.2 genes: {len(hits)}\n")
+print(f"variants in configured secondary-gene set: {len(hits)}\n")
 if not hits:
-    print("No candidate secondary findings.")
+    print("No candidates in this limited lookup; not a negative clinical finding.")
 for r in hits:
     af = "absent" if r["af"] is None else f"{r['af']:.1e}"
     print(f"  {r['gene']:<9} {r['input'].split(' . ')[0]:<20} {r['cons']:<28} "

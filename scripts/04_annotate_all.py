@@ -1,52 +1,72 @@
-"""Annotate the coding variant set via Ensembl VEP REST, in parallel.
+"""Resumable VEP annotation with exact coverage checks and cache provenance.
 
-Writes one JSON file per batch so the run is resumable: rerunning skips
-any batch whose part file already exists.
-
-Determinism note. Re-fetching a batch produces a byte-different file: the VEP
-REST service does not guarantee a stable key order in its JSON objects. The
-content is stable. A field-by-field comparison of re-fetched batches against
-earlier ones showed zero differing values, identical record order, and an
-unchanged final ranking. Compare these files semantically, not by checksum.
+An existing unmanifested cache needs explicit --adopt-existing-cache. Adoption
+validates inputs and records present-day hashes; it cannot recover a historical
+VEP release or prove the historical request options.
 """
-import json, os, time, urllib.request
+from __future__ import annotations
+import argparse
+import json
+import time
+import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
+from pathlib import Path
+from annotation_cache import BATCH, ENDPOINT, OPTIONS, inputs_from_tsv, request_identity, validate_batch, validate_cache, write_manifest
 
-SRC, PARTS, BATCH, WORKERS = "out/coding_pass.tsv", "out/vep_parts", 200, 6
+ROOT = Path(__file__).resolve().parent.parent
 
-variants = []
-for line in open(SRC):
-    f = line.rstrip("\n").split("\t")
-    variants.append(f"{f[0]} {f[1]} . {f[2]} {f[3]} . . .")
-batches = [(i // BATCH, variants[i:i+BATCH]) for i in range(0, len(variants), BATCH)]
-todo = [b for b in batches if not os.path.exists(f"{PARTS}/b{b[0]:04d}.json")]
-print(f"{len(variants):,} variants in {len(batches)} batches; {len(todo)} still to do", flush=True)
-
-def run(job):
-    idx, chunk = job
-    body = json.dumps({"variants": chunk, "canonical": 1, "hgvs": 1, "symbol": 1,
-                       "mane": 1, "numbers": 1, "af": 1, "af_gnomade": 1,
-                       "af_gnomadg": 1, "sift": 1, "polyphen": 1}).encode()
-    req = urllib.request.Request("https://rest.ensembl.org/vep/human/region", data=body,
-          headers={"Content-Type": "application/json", "Accept": "application/json"})
-    for attempt in range(6):
+def fetch_batch(chunk, attempts=6):
+    req = urllib.request.Request(ENDPOINT, data=json.dumps({'variants':chunk,**OPTIONS}).encode(),
+          headers={'Content-Type':'application/json','Accept':'application/json'})
+    for attempt in range(attempts):
         try:
-            res = json.load(urllib.request.urlopen(req, timeout=300))
-            tmp = f"{PARTS}/b{idx:04d}.json.tmp"
-            with open(tmp, "w") as fh: json.dump(res, fh)
-            os.replace(tmp, f"{PARTS}/b{idx:04d}.json")   # atomic, so partial files never look done
-            return idx, len(res), None
-        except Exception as e:
-            if attempt == 5: return idx, 0, str(e)
-            time.sleep(2 ** attempt)
+            with urllib.request.urlopen(req,timeout=300) as response:
+                rows=json.load(response)
+            validate_batch(rows,chunk)
+            return rows
+        except Exception:
+            if attempt==attempts-1: raise
+            time.sleep(2**attempt)
 
-t0, n = time.time(), 0
-with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-    futs = [ex.submit(run, j) for j in todo]
-    for f in as_completed(futs):
-        idx, cnt, err = f.result(); n += 1
-        if err: print(f"  batch {idx} FAILED: {err}", flush=True)
-        if n % 10 == 0 or n == len(todo):
-            el = time.time() - t0
-            print(f"  {n}/{len(todo)} batches  {el:.0f}s elapsed  eta {el/n*(len(todo)-n):.0f}s", flush=True)
-print("done", flush=True)
+def main():
+    ap=argparse.ArgumentParser();ap.add_argument('--adopt-existing-cache',action='store_true')
+    args=ap.parse_args(); parts=ROOT/'out/vep_parts';parts.mkdir(parents=True,exist_ok=True)
+    manifest=ROOT/'out/annotation_manifest.json'; identity=ROOT/'out/annotation_request.json'
+    now=datetime.now(timezone.utc).isoformat()
+    if args.adopt_existing_cache:
+        if manifest.exists():
+            validate_cache(ROOT);print('Existing manifest and complete cache verified');return
+        m=write_manifest(ROOT,{'origin':'legacy_cache_adoption','verified_at':now,
+            'service_release':'not recorded at original annotation time',
+            'request_options':'inferred from historical script; not server-attested'})
+        identity.write_text(json.dumps(request_identity(ROOT),indent=2)+'\n')
+        print(f"Adopted and verified {m['records']} cached records; no network calls");return
+    if manifest.exists():
+        validate_cache(ROOT);print('Complete annotation cache verified');return
+    expected=request_identity(ROOT)
+    if identity.exists():
+        if json.loads(identity.read_text())!=expected:raise ValueError('Input/options changed; use a separate output directory')
+    elif list(parts.glob('*.json')):
+        raise ValueError('Unmanifested legacy cache: validate with --adopt-existing-cache first')
+    else:identity.write_text(json.dumps(expected,indent=2)+'\n')
+    variants=inputs_from_tsv(ROOT/'out/coding_pass.tsv');jobs=[]
+    for i in range(0,len(variants),BATCH):
+        p=parts/f'b{i//BATCH:04d}.json';chunk=variants[i:i+BATCH]
+        if p.exists():validate_batch(json.loads(p.read_text()),chunk)
+        else:jobs.append((p,chunk))
+    failures=[]
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        futures={ex.submit(fetch_batch,chunk):p for p,chunk in jobs}
+        for future in as_completed(futures):
+            p=futures[future]
+            try:
+                rows=future.result();tmp=p.with_suffix('.tmp');tmp.write_text(json.dumps(rows));tmp.replace(p)
+            except Exception as e:
+                failures.append(p.name);print(f'{p.name} FAILED ({type(e).__name__})',flush=True)
+    if failures:raise RuntimeError(f'{len(failures)} annotation batches failed; ranking is blocked')
+    write_manifest(ROOT,{'origin':'VEP_REST','completed_at':now,
+        'service_release':'live endpoint; release not pinned; retain response hashes'})
+    print(f'Complete: {len(variants)} unique coding inputs validated')
+
+if __name__=='__main__':main()
