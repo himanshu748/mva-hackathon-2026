@@ -15,11 +15,14 @@ Both variants are heterozygous. Their trans configuration remains unproven. Both
 
 - [Track 1 methods and limitations](report/HIMANSHUKUMARJHA_track1_report.md)
 - [Track 2 preclinical proposal](report/HIMANSHUKUMARJHA_track2_report.md)
+- [Research comparison plan](report/research_plan.md)
+- [Source-linked evidence ledger](report/evidence_ledger.json)
+- [Rules audit](report/rules_audit.md)
 - [Pitch narration](report/track2_pitch_script.md)
 - [AI and external-service disclosure](report/data_handling_disclosure.md)
 - [Sensitivity results](report/sensitivity_summary.json)
 
-Track 2 proposes testing selective senescent-cell clearance. Genetic mouse experiments and small adult drug studies motivate the work. They do not establish safety or efficacy in this child. No pediatric treatment schedule is proposed.
+Track 2 proposes testing selective senescent-cell clearance. Genetic mouse experiments and small adult drug studies motivate the work. They do not establish safety or efficacy in this child. No pediatric treatment schedule is proposed. The proposal also addresses a randomized trial with a negative primary endpoint and 2026 myelination-harm findings; the comparison plan measures healthy tissue function separately from cell survival.
 
 ## Reproduction
 

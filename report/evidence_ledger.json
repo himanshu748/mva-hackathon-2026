@@ -1,0 +1,101 @@
+{
+  "review_date": "2026-09-07",
+  "review_type": "targeted primary-source review; not systematic",
+  "patient_drug_response_data": false,
+  "drug_decision": "conditional preclinical comparison only",
+  "approved_candidate": "dasatinib",
+  "experimental_partner": "quercetin",
+  "studies": [
+    {
+      "id": "suijkerbuijk2010",
+      "population_or_model": "MVA patient-derived cells",
+      "intervention": "genetic BUBR1 expression",
+      "finding": "Checkpoint function restored in the studied cell lines.",
+      "limit": "Not a drug result or an assay of this exact pair.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/20516114/",
+      "evidence_type": "mechanism"
+    },
+    {
+      "id": "baker2011",
+      "population_or_model": "BubR1 hypomorphic mice",
+      "intervention": "genetic clearance of p16-positive cells",
+      "finding": "Selected age-associated disorders delayed.",
+      "limit": "Not pharmacologic D+Q efficacy or pediatric MVA benefit.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/22048312/",
+      "evidence_type": "supporting"
+    },
+    {
+      "id": "north2014",
+      "population_or_model": "cell and mouse models",
+      "intervention": "SIRT2 overexpression / NAD precursor experiments",
+      "finding": "BubR1 abundance can be regulated in the studied systems.",
+      "limit": "Not proof of rescue of the exact missense allele or an approved MVA medication.",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194088/",
+      "evidence_type": "alternative_mechanism"
+    },
+    {
+      "id": "zhu2015",
+      "population_or_model": "senescent cell types and mouse models",
+      "intervention": "dasatinib and quercetin",
+      "finding": "Senolytic activity depends on cell type; components have different activity.",
+      "limit": "Does not establish activity in MVA-derived cells.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/25754370/",
+      "evidence_type": "supporting"
+    },
+    {
+      "id": "hickson2019",
+      "population_or_model": "nine adults with diabetic kidney disease",
+      "intervention": "D+Q open-label pilot",
+      "finding": "Senescence-associated markers decreased after exposure.",
+      "limit": "Uncontrolled biomarkers do not establish MVA clinical efficacy.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/31542391/",
+      "evidence_type": "supporting"
+    },
+    {
+      "id": "justice2019",
+      "population_or_model": "14 adults with idiopathic pulmonary fibrosis",
+      "intervention": "D+Q open-label pilot",
+      "finding": "Feasibility and exploratory functional outcomes reported.",
+      "limit": "No controlled pediatric MVA efficacy or dose.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30616998/",
+      "evidence_type": "supporting"
+    },
+    {
+      "id": "nambiar2023",
+      "population_or_model": "adults with idiopathic pulmonary fibrosis",
+      "intervention": "randomized D+Q feasibility pilot",
+      "finding": "Controlled feasibility/tolerability follow-up.",
+      "limit": "Not a powered demonstration of clinical efficacy.",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10006434/",
+      "evidence_type": "feasibility"
+    },
+    {
+      "id": "farr2024",
+      "population_or_model": "60 postmenopausal women",
+      "intervention": "phase 2 randomized D+Q trial",
+      "finding": "Primary bone-resorption endpoint at 20 weeks did not differ between groups; P=0.611.",
+      "limit": "Exploratory subgroups do not establish overall efficacy or an MVA biomarker.",
+      "source": "https://www.nature.com/articles/s41591-024-03096-2",
+      "evidence_type": "negative_primary_endpoint"
+    },
+    {
+      "id": "lombardo2026",
+      "population_or_model": "young/adult and aged mice; rat oligodendrocyte cultures",
+      "intervention": "D+Q",
+      "finding": "Demyelination and impaired oligodendrocyte function occurred without apparent cell death.",
+      "limit": "Does not estimate human risk or define an MVA exposure threshold.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/41843680/",
+      "evidence_type": "adverse_functional_result"
+    },
+    {
+      "id": "fda2024",
+      "population_or_model": "approved product labeling",
+      "intervention": "dasatinib",
+      "finding": "Specified oncology indications and safety warnings, including pediatric growth concerns.",
+      "limit": "Not approval of D+Q, senolysis or MVA treatment.",
+      "source": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/021986s028lbl.pdf",
+      "evidence_type": "regulatory"
+    }
+  ],
+  "acknowledgement": "This work was made possible through the Hackathon, organized by Sage Bionetworks in partnership with the MVA Society, Hugging Face, and BEACON (The Benchmarking, Evaluation, and Assessment Consortium for Science), with prize sponsorship from AWS and Anthropic. We are deeply grateful to the child and their family who generously contributed their data and their story to advance research into this rare disease. We acknowledge their trust in making this Hackathon possible."
+}

@@ -10,6 +10,8 @@ This is a proposal for preclinical investigation. It does not recommend administ
 
 We propose testing whether senescent-cell clearance can improve selected cellular and tissue phenotypes associated with BUB1B dysfunction. Dasatinib is the market-approved drug selected for repurposing investigation, with quercetin as the experimental combination partner used in published senolytic studies. The combination is not an approved MVA treatment, and we do not propose a pediatric dosing regimen.
 
+Our decision is to retain D+Q as a conditional preclinical candidate, with no claim that it is ready for clinical translation. The proposed contribution is an explicit comparison of selective clearance, tissue benefit and harm to healthy developing cells. A compound should advance only if those outcomes support it together; a reduction in senescence markers alone is insufficient.
+
 The reason to investigate this is a same-gene mouse experiment: clearing p16-positive cells in BubR1 hypomorphic mice delayed selected age-associated disorders. It establishes a target-level rationale in that model. Translation to pharmacologic clearance, this child’s alleles, growing human tissues and cancer predisposition requires separate evidence.
 
 ## 2. Variant mechanism and uncertainty
@@ -30,9 +32,16 @@ The therapeutic hypothesis adds a further step: BUB1B dysfunction may produce a 
 | D+Q in nine adults with diabetic kidney disease, Hickson et al. 2019 | Preliminary human senescence-marker/target-engagement evidence after a short course | Pediatric exposure, MVA efficacy or long-term safety |
 | D+Q open-label pilot in 14 adults with idiopathic pulmonary fibrosis, Justice et al. 2019 | Feasibility of an intermittent regimen and exploratory outcomes | Controlled evidence of clinical benefit in MVA |
 | Small randomized IPF feasibility/tolerability pilot, Nambiar et al. 2023 | A controlled follow-up to early feasibility work | A powered efficacy demonstration or pediatric MVA validation |
+| Original D/Q discovery experiments, Zhu et al. 2015 | Drug activity differed across senescent cell types, motivating component controls | Universal senolytic activity or activity in this patient's tissues |
+| Phase 2 randomized study in 60 postmenopausal women, Farr et al. 2024 | Primary bone-resorption endpoint was not different between groups at 20 weeks (P=0.611); subgroup findings were exploratory | General clinical benefit from intermittent D+Q or a validated patient-selection biomarker for MVA |
+| D+Q in young and aged mice and rat oligodendrocyte cultures, Lombardo et al. 2026 | Myelin and oligodendrocyte dysfunction occurred without evident cell death in those systems | The incidence or exposure threshold for this harm in humans |
 | FDA dasatinib labeling | Existing oncology indications, pharmacology and specified safety warnings | Approval of D+Q senolysis or a safe MVA dose |
 
 Sources: [Baker 2011](https://pubmed.ncbi.nlm.nih.gov/22048312/), [Hickson 2019](https://pubmed.ncbi.nlm.nih.gov/31542391/), [Justice 2019](https://pubmed.ncbi.nlm.nih.gov/30616998/), [Nambiar 2023](https://pmc.ncbi.nlm.nih.gov/articles/PMC10006434/), [FDA prescribing information](https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/021986s028lbl.pdf).
+
+Additional primary sources: [Zhu 2015](https://pubmed.ncbi.nlm.nih.gov/25754370/), [Farr 2024](https://www.nature.com/articles/s41591-024-03096-2), [Lombardo 2026](https://pubmed.ncbi.nlm.nih.gov/41843680/).
+
+The 2024 trial prevents an inference of general benefit from the earlier uncontrolled studies. The 2026 neural findings change our experimental requirements: survival alone cannot establish safety, so we add differentiation and myelination readouts. These reports concern other populations and models; neither proves the response in MVA. They are reasons to test the proposed mechanism more carefully.
 
 The studies use different populations, interventions and endpoints. In particular, the diabetic kidney disease pilot administered a three-day course; the earlier IPF pilot used three days per week over three weeks. These are study descriptions, not an interchangeable regimen and not a dose recommendation for this child.
 
@@ -44,7 +53,7 @@ D+Q has a documented senolytic research history and preliminary human target-eng
 
 Quercetin is an experimental partner in this proposal. We do not infer pediatric safety from its occurrence in food or describe the combination as market-approved. The experimental comparison should include vehicle, dasatinib alone, quercetin alone and D+Q; otherwise an observed effect cannot be attributed to the combination or its components.
 
-This submission’s contribution is a transparent evidence chain and a staged validation plan tailored to BUB1B-associated disease. We have not established that this is the first senolytic proposal for MVA. Novelty is not claimed from a literature search failing to return a prior proposal.
+This submission's contribution is a source-linked evidence ledger and a comparison plan tailored to BUB1B-associated disease. It distinguishes disease-gene correction, removal of damaged cells, and the survival of healthier cells after treatment. The latter can change the apparent aneuploid fraction without repairing the underlying checkpoint defect. We would measure segregation errors among surviving dividing cells separately from the composition of the culture. We have not established that this is the first senolytic proposal for MVA. Novelty is not claimed from a literature search failing to return a prior proposal.
 
 ## 5. Safety questions that determine whether to continue
 
@@ -52,11 +61,16 @@ Dasatinib’s prescribing information identifies myelosuppression, bleeding, flu
 
 Intermittent administration changes exposure, but we have no evidence that it avoids these risks in MVA. We therefore withdraw the earlier suggestion that intermittent dosing probably resolves the growth concern. A suitable therapeutic window has to be demonstrated, including selectivity for senescent cells over proliferating and repair-capable cells.
 
-Senolysis kills target cells; it is different from disabling p16-mediated arrest and allowing damaged cells to resume cycling. The cancer question concerns off-target effects, altered tissue repair and signaling, and the net effect on tumor development or ongoing oncology treatment. A favorable effect cannot be assumed. Both tumor and non-tumor models are needed, because the BubR1 progeroid model does not reproduce every feature of childhood cancer predisposition.
+Senolysis kills target cells; it is different from disabling p16-mediated arrest and allowing damaged cells to resume cycling. The cancer question concerns off-target effects, altered tissue repair and signaling, and the net effect on tumor development or ongoing oncology treatment. A favorable effect cannot be assumed. Neural differentiation/function must also be examined because of the 2026 myelination findings. Both tumor and non-tumor models are needed, because the BubR1 progeroid model does not reproduce every feature of childhood cancer predisposition.
 
 Clinical drug-interaction review and regulated oversight would be required before any clinical study. The present computational work does not authorize exposure or contact with the child or family.
 
 ## 6. Alternatives and comparison criteria
+
+We prioritize comparisons by what uncertainty they resolve, rather than assigning a numerical drug score from heterogeneous papers. D+Q stays conditional because there is no direct patient response evidence. Dasatinib alone tests whether the unapproved partner adds benefit. An isogenic correction control tests the disease mechanism rather than the pharmacology.
+
+An upstream comparison is motivated by published restoration of checkpoint function after BUBR1 expression in other MVA-derived cell lines and by SIRT2/BubR1 stabilization experiments. These do not establish rescue of p.Asn1002Lys or nominate a market-approved SIRT2 therapy. In particular, an engineered genetic intervention or an NAD precursor must not be relabeled an approved MVA medicine. We retain them as mechanistic research references. [Suijkerbuijk 2010](https://pubmed.ncbi.nlm.nih.gov/20516114/), [North 2014](https://pmc.ncbi.nlm.nih.gov/articles/PMC4194088/).
+
 
 | Candidate | Reason to compare | Unresolved issue |
 |---|---|---|
@@ -80,11 +94,19 @@ These are research comparisons rather than a clinical ranking. We do not substit
 
 No patient-cell experiment or animal experiment in this plan has been performed by this team. These are proposed gates, not completed results.
 
+### Prespecified comparison and analysis
+
+The companion [research plan](research_plan.md) specifies the comparison units, outcome definitions and records needed before experiments start. Patient-background cultures, corrected controls and unrelated non-MVA controls answer different questions; induced senescence in a healthy line is an assay control, not a substitute for the patient's disease. A single patient's independent cultures or clones can support within-model replication but cannot establish between-patient generalizability.
+
+Use separate outcomes for baseline target burden, preferential clearance, tissue function, ongoing chromosome missegregation and neural differentiation. Report absolute counts and denominators as well as proportions, and follow survivors after drug washout. Compare D+Q with vehicle and with each component at matched experimental conditions. Require evidence of combination advantage before retaining quercetin; do not claim synergy from a combination-versus-vehicle result alone.
+
+Randomize treatment allocation across batches, blind image scoring, and average technical wells within each independent biological unit before inferential analysis. Prespecify the primary functional endpoint, relevant effect-size and harm margins, follow-up interval, exclusion criteria and multiplicity handling with a qualified laboratory team. Estimate variance from a feasibility stage before planning confirmatory sample sizes. Those choices remain pending; the current submission is not a registered or powered protocol.
+
 ## 8. Scalability and limits
 
-The evidence-table and staged-validation approach can be reused for other rare-disease hypotheses. Biological transfer to CEP57-, TRIP13- or other chromosome-instability disorders cannot be presumed; each needs evidence of the target and selective benefit. The Track 1 code now accepts a configurable HPO profile, but computational reuse is not equivalent to validation in another patient.
+The source-linked ledger and staged-validation approach can be reused for other rare-disease hypotheses. Biological transfer to CEP57-, TRIP13- or other chromosome-instability disorders cannot be presumed; each needs evidence of the target and selective benefit. The Track 1 code now accepts a configurable HPO profile, but computational reuse is not equivalent to validation in another patient.
 
-The central limitations are unestablished phase and allele function, no patient senescence measurements, incomplete equivalence between the mouse model and human disease, uncertain pharmacologic selectivity, and absent pediatric MVA efficacy/safety evidence. The VCF-only mosaicism screen was inconclusive. The literature review was targeted, not systematic or exhaustive, and the proposal makes no priority claim.
+The central limitations are unestablished phase and allele function, no patient senescence measurements, incomplete equivalence between the mouse model and human disease, uncertain pharmacologic selectivity, and absent pediatric MVA efficacy/safety evidence. The VCF-only mosaicism screen was inconclusive. The literature review was targeted, not systematic or exhaustive. A search log and contrary findings are provided in the companion research plan; the review included adverse/negative results as well as supporting studies. The proposal makes no priority claim.
 
 ## 9. Methods description form
 
@@ -122,9 +144,9 @@ We propose preclinical evaluation of dasatinib, with quercetin as an experimenta
 
 Track 1 recovered the organizer-validated BUB1B candidate pair. Our own analysis predicts loss of function for p.Leu737Ter and reports damaging computational predictions for p.Asn1002Lys. Phase and residual protein activity remain unmeasured. BUBR1 participates in the mitotic checkpoint complex with BUB3, MAD2 and CDC20; impaired checkpoint activity provides a plausible route to chromosome missegregation.
 
-The target-level rationale comes from genetic clearance of p16-positive cells in BubR1 hypomorphic mice, which delayed selected age-associated disorders. Published D+Q studies provide preliminary adult human target-engagement and feasibility evidence in other diseases. These findings justify testing a hypothesis; they do not demonstrate benefit or safety in pediatric MVA.
+The target-level rationale comes from genetic clearance of p16-positive cells in BubR1 hypomorphic mice, which delayed selected age-associated disorders. Published D+Q studies provide preliminary adult human target-engagement and feasibility evidence in other diseases. A 2024 randomized trial missed its primary bone-resorption endpoint, and a 2026 study identified myelin dysfunction in mice without obvious cell death. The proposal therefore requires functional and neural safety outcomes alongside target engagement.
 
-We separate genotype interpretation, target presence, selective drug activity, tissue-function rescue and clinical translation into successive validation gates. The proposed experiments compare vehicle, individual components and D+Q, with controls for nonspecific toxicity and continued chromosome instability. Growth, marrow function, tissue repair and cancer-context effects are required endpoints. Failure to establish excess senescence in relevant models, selective clearance or functional benefit would halt progression of the proposal.
+We separate genotype interpretation, target presence, selective drug activity, tissue-function rescue and clinical translation into successive validation gates. The proposed experiments compare vehicle, individual components and D+Q, with controls for nonspecific toxicity and continued chromosome instability. Growth, marrow function, neural differentiation, tissue repair and cancer-context effects are required endpoints. We distinguish a changed aneuploid cell fraction from correction of ongoing chromosome segregation errors. Failure to establish excess senescence in relevant models, selective clearance or functional benefit would halt progression of the proposal.
 
 The approach can organize evidence for other rare-disease hypotheses, but transfer of the biological conclusion requires separate validation. Limitations include no patient-derived experiments, no established pediatric therapeutic window, incomplete model equivalence and a targeted rather than exhaustive literature review. We make no claim of first discovery or demonstrated efficacy.
 
