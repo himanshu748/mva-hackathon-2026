@@ -1,6 +1,6 @@
 {
   "checked_on": "2026-09-07",
-  "scope": "local final file only; hosted upload not verified",
+  "scope": "local file verified; YouTube Studio confirmed upload and Unlisted visibility",
   "duration_seconds": 161,
   "width": 1920,
   "height": 1080,
@@ -22,5 +22,10 @@
   ],
   "full_acknowledgement": true,
   "sha256": "d2fa48f9cd1e973319bbb297b03ea319604292be321e45d7c506a4f6f541de07",
-  "external_speech_request_for_this_cut": false
+  "external_speech_request_for_this_cut": false,
+  "youtube_url": "https://youtu.be/s92NWCo-Kzw",
+  "youtube_visibility": "Unlisted",
+  "youtube_processing": "complete",
+  "youtube_copyright_checks": "running at last check",
+  "hosted_playback": "Opened YouTube watch page and verified first slide playback"
 }

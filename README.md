@@ -18,7 +18,8 @@ Both variants are heterozygous. Their trans configuration remains unproven. Both
 - [Research comparison plan](report/research_plan.md)
 - [Source-linked evidence ledger](report/evidence_ledger.json)
 - [Rules audit](report/rules_audit.md)
-- [Pitch narration](report/track2_pitch_script.md)
+- [Silent pitch video](https://youtu.be/s92NWCo-Kzw)
+- [Pitch script](report/track2_pitch_script.md)
 - [AI and external-service disclosure](report/data_handling_disclosure.md)
 - [Sensitivity results](report/sensitivity_summary.json)
 
