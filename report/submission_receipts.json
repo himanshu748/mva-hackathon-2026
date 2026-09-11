@@ -32,11 +32,17 @@
     "track1_report_sha256": "66f2c73fd4c25f916f87c47eafe49aaadfeaa03a0f0894b00bde4d5835e43530",
     "track2": {
       "video_uploaded": true,
-      "submitted": false,
+      "submitted": true,
       "video_url": "https://youtu.be/Q3NtkrgNHuM",
       "video_visibility_selected": "unlisted",
-      "video_processing_verified": false,
-      "video_duration_ui": "2:57"
-    }
+      "video_processing_verified": true,
+      "video_duration_ui": "2:57",
+      "submission_number": 2,
+      "receipt": "Track 2 submission received \u2713",
+      "report": "HIMANSHUKUMARJHA_track2_report.md",
+      "repository": "https://github.com/himanshu748/mva-hackathon-2026",
+      "review_status": "awaiting expert judging panel"
+    },
+    "track2_report_sha256": "0a9609c411a037a31027a54f20b7a10ac2746799b5af7e52828764140f3057cc"
   }
 }
