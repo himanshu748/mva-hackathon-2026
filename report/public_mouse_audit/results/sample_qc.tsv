@@ -1,0 +1,24 @@
+sample	gsm	tissue	genotype	age	background_strain	total_gene_counts	nonzero_gene_rows	median_ratio_size_factor	sex_available	exact_age_available	batch_litter_available	cross_tissue_animal_pairing_available
+10mo_skM_WT_1	GSM3968592	gastrocnemius muscle	WT	8-10 months	129Sve/C57BL/6 mix	47963784	16316	0.9991749441639339	False	False	False	False
+10mo_skM_WT_2	GSM3968593	gastrocnemius muscle	WT	8-10 months	129Sve/C57BL/6 mix	53929667	16709	1.2827913192567508	False	False	False	False
+10mo_skM_WT_3	GSM3968594	gastrocnemius muscle	WT	8-10 months	129Sve/C57BL/6 mix	39737063	16121	0.8559483581648388	False	False	False	False
+10mo_skM_WT_4	GSM3968595	gastrocnemius muscle	WT	8-10 months	129Sve/C57BL/6 mix	45870749	16139	0.9556995377752775	False	False	False	False
+10mo_skM_HL1002P_1	GSM3968596	gastrocnemius muscle	HL1002P	8-10 months	129Sve/C57BL/6 mix	34137821	16295	0.7779870070762305	False	False	False	False
+10mo_skM_HL1002P_2	GSM3968597	gastrocnemius muscle	HL1002P	8-10 months	129Sve/C57BL/6 mix	45506866	16346	0.9834922296707853	False	False	False	False
+10mo_skM_HL1002P_3	GSM3968598	gastrocnemius muscle	HL1002P	8-10 months	129Sve/C57BL/6 mix	43424722	16401	0.9532403156538674	False	False	False	False
+10mo_skM_HL1002P_4	GSM3968599	gastrocnemius muscle	HL1002P	8-10 months	129Sve/C57BL/6 mix	55266273	16677	1.219170426977916	False	False	False	False
+10mo_skM_HH_1	GSM3968600	gastrocnemius muscle	HH	8-10 months	129Sve/C57BL/6 mix	40568032	16492	0.9506319431863647	False	False	False	False
+10mo_skM_HH_2	GSM3968601	gastrocnemius muscle	HH	8-10 months	129Sve/C57BL/6 mix	51280062	16570	1.1193278550596308	False	False	False	False
+10mo_skM_HH_3	GSM3968602	gastrocnemius muscle	HH	8-10 months	129Sve/C57BL/6 mix	42602199	16793	1.0376028135531175	False	False	False	False
+10mo_fat_WT_1	GSM3968603	fat (IAT)	WT	8-10 months	129Sve/C57BL/6 mix	52212535	17479	1.118817599915196	False	False	False	False
+10mo_fat_WT_2	GSM3968604	fat (IAT)	WT	8-10 months	129Sve/C57BL/6 mix	37631066	17318	0.7601158097635232	False	False	False	False
+10mo_fat_WT_3	GSM3968605	fat (IAT)	WT	8-10 months	129Sve/C57BL/6 mix	58828571	18338	1.4811926399914799	False	False	False	False
+10mo_fat_WT_4	GSM3968606	fat (IAT)	WT	8-10 months	129Sve/C57BL/6 mix	39965863	17903	1.0047774971836156	False	False	False	False
+10mo_fat_HL1002P_1	GSM3968607	fat (IAT)	HL1002P	8-10 months	129Sve/C57BL/6 mix	34229418	17538	0.8585770771714921	False	False	False	False
+10mo_fat_HL1002P_2	GSM3968608	fat (IAT)	HL1002P	8-10 months	129Sve/C57BL/6 mix	54056391	18035	1.368796085999985	False	False	False	False
+10mo_fat_HL1002P_3	GSM3968609	fat (IAT)	HL1002P	8-10 months	129Sve/C57BL/6 mix	51403776	18023	1.3883205285091655	False	False	False	False
+10mo_fat_HL1002P_4	GSM3968610	fat (IAT)	HL1002P	8-10 months	129Sve/C57BL/6 mix	28496631	17719	0.7343006316633944	False	False	False	False
+10mo_fat_HH_1	GSM3968611	fat (IAT)	HH	8-10 months	129Sve/C57BL/6 mix	51138464	17938	1.2146334525632123	False	False	False	False
+10mo_fat_HH_2	GSM3968612	fat (IAT)	HH	8-10 months	129Sve/C57BL/6 mix	44507336	18065	1.233409854790482	False	False	False	False
+10mo_fat_HH_3	GSM3968613	fat (IAT)	HH	8-10 months	129Sve/C57BL/6 mix	22552184	17115	0.5863094943948329	False	False	False	False
+10mo_fat_HH_4	GSM3968614	fat (IAT)	HH	8-10 months	129Sve/C57BL/6 mix	30000008	17584	0.759433938724069	False	False	False	False
