@@ -8,7 +8,11 @@
   "audio_tracks": 0,
   "acknowledgement_seconds": 26,
   "sha256": "c6eea21a2a2b13a8516594a50bf52c82faa713f482ef14ac65007f3cd95dc0ba",
-  "hosted_upload": false,
+  "hosted_upload": true,
   "slides_visual_review": "Changed slides 1, 3, 5 and 7 inspected at 1920x1080; readable with no clipping. Other five slide contents unchanged from previously reviewed deck.",
-  "reviewed_on": "2026-09-11"
+  "reviewed_on": "2026-09-11",
+  "hosted_url": "https://youtu.be/Q3NtkrgNHuM",
+  "hosted_visibility": "Unlisted",
+  "hosted_duration_ui": "2:57",
+  "hosted_watch_page_verified_on": "2026-09-11"
 }

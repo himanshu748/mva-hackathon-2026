@@ -18,7 +18,7 @@ Both variants are heterozygous. Their trans configuration remains unproven. Both
 - [Research comparison plan](report/research_plan.md)
 - [Source-linked evidence ledger](report/evidence_ledger.json)
 - [Rules audit](report/rules_audit.md)
-- Current silent pitch: upload verification pending; the historical video is superseded.
+- Current silent pitch: https://youtu.be/Q3NtkrgNHuM (2:57, unlisted; the historical video is superseded).
 - [Offline transcript-selection audit](report/local_ranking_audit/README.md)
 - [Public mouse-data audit](report/public_mouse_audit/findings.md)
 - [Public heart-data audit](report/heart_evidence_audit/README.md)
