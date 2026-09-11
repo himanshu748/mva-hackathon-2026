@@ -1,0 +1,18 @@
+[
+  {
+    "gene": "CTU2",
+    "filter": "PASS",
+    "gt": "1/1",
+    "depth": 27,
+    "gq": 82,
+    "matches_cached_input": true
+  },
+  {
+    "gene": "LZTR1",
+    "filter": "PASS",
+    "gt": "0/1",
+    "depth": 48,
+    "gq": 99,
+    "matches_cached_input": true
+  }
+]

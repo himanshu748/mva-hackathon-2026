@@ -1,0 +1,128 @@
+{
+  "checked_on": "2026-09-08",
+  "scope": "Public literature, registry and exact candidate-variant reference checks; no new raw challenge analysis",
+  "records": [
+    {
+      "name": "clinvar_exact_coding",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=BUB1B%5BGene%5D+AND+%22c.3006T%3EG%22&retmode=json",
+      "file": "clinvar_exact_coding.json",
+      "checked_at": "2026-09-07T20:35:51.682740+00:00",
+      "bytes": 390,
+      "sha256": "167bd8f64d4b7d88d64a718d2a859607cd243f3bb54d972823f46c182fc831ac",
+      "count": "0"
+    },
+    {
+      "name": "clinvar_exact_genomic",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=%22NC_000015.10%3Ag.40220612T%3EG%22&retmode=json",
+      "file": "clinvar_exact_genomic.json",
+      "checked_at": "2026-09-07T20:35:52.928476+00:00",
+      "bytes": 385,
+      "sha256": "fd64f2c638cc11e6c052db8f1558171ab951f6e6de8ebd8d853976795b0de84a",
+      "count": "0"
+    },
+    {
+      "name": "clinvar_protein_equivalent",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=clinvar&id=4600147&rettype=vcv&is_variationid=true",
+      "file": "clinvar_protein_equivalent.xml",
+      "checked_at": "2026-09-07T20:35:54.450019+00:00",
+      "bytes": 13303,
+      "sha256": "d75e6b2ad13feb7ba1f47f1f33223f7a1cb92bcfa85d8f24021b7268c31284a2",
+      "archive": {
+        "VariationID": "4600147",
+        "VariationName": "NM_001211.6(BUB1B):c.3006T>A (p.Asn1002Lys)",
+        "VariationType": "single nucleotide variant",
+        "Accession": "VCV004600147",
+        "Version": "1",
+        "RecordType": "classified",
+        "NumberOfSubmissions": "1",
+        "NumberOfSubmitters": "1",
+        "DateLastUpdated": "2026-01-11",
+        "DateCreated": "2026-01-11",
+        "MostRecentSubmission": "2026-01-11"
+      },
+      "germline_classification": [
+        {
+          "DateLastEvaluated": "2025-09-19",
+          "NumberOfSubmissions": "1",
+          "NumberOfSubmitters": "1",
+          "DateCreated": "2026-01-11",
+          "MostRecentSubmission": "2026-01-11",
+          "description": "Uncertain significance",
+          "review_status": "criteria provided, single submitter"
+        }
+      ]
+    },
+    {
+      "name": "clinvar_stop",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=clinvar&id=533901&rettype=vcv&is_variationid=true",
+      "file": "clinvar_stop.xml",
+      "checked_at": "2026-09-07T20:35:55.965867+00:00",
+      "bytes": 17202,
+      "sha256": "4dbef0b2235c79f4e3a6f0d70cf16cefe13cd9a0827ad92a6cf74a5a0f407b72",
+      "archive": {
+        "VariationID": "533901",
+        "VariationName": "NM_001211.6(BUB1B):c.2210T>G (p.Leu737Ter)",
+        "VariationType": "single nucleotide variant",
+        "Accession": "VCV000533901",
+        "Version": "9",
+        "RecordType": "classified",
+        "NumberOfSubmissions": "2",
+        "NumberOfSubmitters": "2",
+        "DateLastUpdated": "2025-05-17",
+        "DateCreated": "2018-05-28",
+        "MostRecentSubmission": "2025-02-25"
+      },
+      "germline_classification": [
+        {
+          "DateLastEvaluated": "2024-10-09",
+          "NumberOfSubmissions": "2",
+          "NumberOfSubmitters": "2",
+          "DateCreated": "2018-05-28",
+          "MostRecentSubmission": "2025-02-25",
+          "description": "Pathogenic/Likely pathogenic",
+          "review_status": "criteria provided, multiple submitters, no conflicts"
+        }
+      ]
+    },
+    {
+      "name": "trials_full_disease",
+      "url": "https://clinicaltrials.gov/api/v2/studies?query.term=%22mosaic+variegated+aneuploidy%22&countTotal=true&pageSize=100&format=json",
+      "file": "trials_full_disease.json",
+      "checked_at": "2026-09-07T20:35:56.597097+00:00",
+      "bytes": 31,
+      "sha256": "b54968c05ff881a1ef7ce604b6a340248f8e2aee8637bef06da0f5693f520df8",
+      "count": 0
+    }
+  ],
+  "exact_variant_interpretation": "The submitted c.3006T>G is not the ClinVar c.3006T>A allele despite both encoding p.Asn1002Lys. No exact-DNA record found in tested queries; do not transfer the T>A VUS classification.",
+  "clinical_interpretation": "No disease-specific trial found by queried terms; this is not proof no relevant research exists. No clinical benefit or individual prognosis established.",
+  "acknowledgement": "This work was made possible through the Hackathon, organized by Sage Bionetworks in partnership with the MVA Society, Hugging Face, and BEACON (The Benchmarking, Evaluation, and Assessment Consortium for Science), with prize sponsorship from AWS and Anthropic. We are deeply grateful to the child and their family who generously contributed their data and their story to advance research into this rare disease. We acknowledge their trust in making this Hackathon possible.",
+  "candidate_challenge": {
+    "checked_on": "2026-09-08",
+    "source_receipts": [
+      {
+        "name": "hirata2020",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7441064/fullTextXML",
+        "bytes": 139168,
+        "sha256": "09de6dc2594ebb83b677e94351a9e8e5843afdedffa752fe64b9137e04f9ee63"
+      },
+      {
+        "name": "nawa2019",
+        "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0219592&type=manuscript",
+        "bytes": 145169,
+        "sha256": "0a294c6df4ef8d116cee19c509405b1f19b79924338d2c70a8220fb3c06dfb16"
+      },
+      {
+        "name": "pheburane_label_2026",
+        "url": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=d15f2cbf-4d22-40b5-8ef9-16b9d323a7f9",
+        "status": 200,
+        "bytes": 69822,
+        "sha256": "921e692a96e687b49c309a023fbfc92f1732351bfa192b560fca97f929f77e12",
+        "checked_at": "2026-09-07T21:16:26.616511+00:00"
+      }
+    ],
+    "independent_review": "Separate Codex agent checked primary Hirata/Nawa models, timing, endpoints and limits; parent checked the current PHEBURANE label. Three precision edits incorporated: Nawa experiment/unit distinction, corrected-control scope, and chromosome-error nonworsening rather than required checkpoint rescue.",
+    "decision": "Conditional sodium phenylbutyrate comparison for demonstrated protein stress; no change to the nominated clearance medicine; no established automatic priority.",
+    "clinical_benefit_demonstrated": false
+  }
+}

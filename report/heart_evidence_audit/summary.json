@@ -1,0 +1,18 @@
+{
+  "author_table_rows": 12308,
+  "unique_gene_symbols": 12308,
+  "pvalue_at_least_005": 10917,
+  "panel_present": 7,
+  "panel_higher": 7,
+  "panel_author_adjusted_p_below_005": 3,
+  "direction_agreement": {
+    "fat (IAT)": 4,
+    "gastrocnemius muscle": 4
+  },
+  "metadata_description_significant_only_is_inaccurate": true,
+  "independent_sex_adjustment_performed": false,
+  "drug_effect_estimated": false,
+  "raw_counts_reanalysis": false,
+  "input_sha256": "101e8df3b4ded7d7f10e0e015a5365f43b2ace6d180bddb5ffd8479421b15800",
+  "previous_results_sha256": "2861b28e7f2d03cf463db592e97aba114afd8599a42a9641df7dc49062ee9b32"
+}

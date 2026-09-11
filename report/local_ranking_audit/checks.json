@@ -1,0 +1,9 @@
+{
+  "baseline_entries_exactly_reproduced": 194,
+  "cache_inputs_verified": 28071,
+  "cache_batches_verified": 141,
+  "branches_checked": 6,
+  "source_calls_checked": 2,
+  "network_requests": 0,
+  "raw_reads_downloaded": 0
+}

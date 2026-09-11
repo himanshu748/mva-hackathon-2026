@@ -1,0 +1,15 @@
+gene,earlier_tissue,earlier_log2_contrast,earlier_direction,heart_author_log2FC,heart_direction,same_direction,earlier_low_count_flag,heart_author_padj
+Cdkn2a,gastrocnemius muscle,2.990479037311859,higher,1.43260719820846,higher,True,False,0.0460080169319752
+Cdkn1a,gastrocnemius muscle,1.5873550869690938,higher,1.8229732986325,higher,True,False,7.80775317341652e-11
+Serpine1,gastrocnemius muscle,-0.34219359991744336,lower,0.821643981760787,higher,False,False,0.402182933197954
+Igfbp2,gastrocnemius muscle,2.8228946418759806,higher,3.16445028397526,higher,True,False,3.06906112333138e-06
+Il6,gastrocnemius muscle,-0.1320929282884918,lower,0.821407134979164,higher,False,True,0.464290483346004
+Ccl2,gastrocnemius muscle,1.0421805224892857,higher,0.94857126304975,higher,True,False,0.331979207092725
+Mmp3,gastrocnemius muscle,-0.020270952957174213,lower,1.33343015768974,higher,False,False,0.366088988663314
+Cdkn2a,fat (IAT),1.8234126422036343,higher,1.43260719820846,higher,True,False,0.0460080169319752
+Cdkn1a,fat (IAT),-1.3426067861453694,lower,1.8229732986325,higher,False,False,7.80775317341652e-11
+Serpine1,fat (IAT),-2.6891375961197825,lower,0.821643981760787,higher,False,False,0.402182933197954
+Igfbp2,fat (IAT),0.22464917541608634,higher,3.16445028397526,higher,True,False,3.06906112333138e-06
+Il6,fat (IAT),0.24604513942134038,higher,0.821407134979164,higher,True,False,0.464290483346004
+Ccl2,fat (IAT),-1.6793086874969338,lower,0.94857126304975,higher,False,False,0.331979207092725
+Mmp3,fat (IAT),0.00839847578000712,higher,1.33343015768974,higher,True,False,0.366088988663314

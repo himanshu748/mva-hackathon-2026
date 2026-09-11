@@ -3,7 +3,7 @@
 MVA Hackathon 2026, “Rare Disease, Real Kid”
 Team: Himanshu Kumar (@HIMANSHUKUMARJHA)
 Proband: PROBAND01
-Revised: 7 September 2026; replaces the methods account accompanying the 1 September entry
+Revised: 11 September 2026; updated methods for the existing 1 September prediction
 
 ## 1. Result and interpretation
 
@@ -63,9 +63,11 @@ On 7 September, the revised pipeline reproduced the saved ranking. Exact input m
 
 On phenotype alone, BUB1B occupies position 14 of 5,268 genes, CEP57 position 15, and TRIP13 position 62. The phenotype calculation contains no variant input, but it was performed after targeted candidate discovery. Display order among tied scores should not be interpreted as additional biological separation.
 
-We varied each of the four weights independently to 75%, 100% and 125% of baseline: 81 combinations with QC and 81 without QC. In all 162 settings, the first BUB1B allele ranked first and the second ranked second or third. At baseline, removing the artefact filter leaves their ranks at 1 and 3. Removing the phenotype term entirely moves them to ranks 3 and 6. The machine-readable results are in `report/sensitivity_summary.json` and are reproducible with `12_sensitivity.py`.
+We varied each of the four weights independently to 75%, 100% and 125% of baseline: 81 combinations with QC and 81 without QC. In all 162 settings, the first BUB1B allele ranked first and the second ranked second or third. At baseline, removing the artefact filter leaves their ranks at 1 and 3. Removing the phenotype term entirely moves them to ranks 3 and 6. The machine-readable results are in `sensitivity_summary.json` and are reproducible with `12_sensitivity.py`.
 
 This is post-hoc stability within one case. It does not remove ascertainment bias or demonstrate performance on other patients.
+
+**Offline transcript-selection audit, 11 September.** All 194 saved baseline entries, order and scores were reproduced exactly after cache/reference validation. Selecting preferred transcripts separately for each gene recovered 20 additional variant–gene entries (214 with the original exclusion heuristic, 249 without). BUB1B remains at ranks 1 and 3 across the six transcript-selection/QC branches. CTU2 and LZTR1 enter the review list; their call quality was checked locally, but neither is established as causal. The PEX5/CTU2 genomic intervals overlap exon boundaries in the same-version cached reference, while their HGVS descriptions are intronic; representation and functional effects remain unresolved. See the [complete local audit](local_ranking_audit/README.md). These results extend method review without changing the submitted variant pair.
 
 **PEX5 requires annotation review.** Its selected MANE transcript returns `splice_donor_variant`, `splice_donor_5th_base_variant`, `coding_sequence_variant` and `intron_variant` together with a deep-intronic HGVS description. The splice-donor term causes the HIGH impact score. The earlier account incorrectly attributed the score to `coding_sequence_variant` and declared a harmless false positive. We now retain it as an unresolved annotation conflict. Transcript structure, representation/normalization and read evidence need review before any splice-effect conclusion.
 
@@ -141,6 +143,11 @@ The revised pipeline validates complete annotation coverage, rejects changed cac
 
 We predict loss of function for the stop allele and report damaging computational predictions for the missense allele without declaring measured hypomorphic activity. The second-ranked PEX5 deletion has conflicting consequence/HGVS annotations and requires further review. VCF-only mosaicism estimates remain inconclusive. Structural variation, much noncoding variation, clinical secondary-finding assessment and held-out validation remain outside the demonstrated scope. The next independent checks are family phasing, allele-function assays and evaluation of a frozen method on other cases.
 
+Current participant-reported AI tiers and models, together with data-handling qualifications, are recorded in the [shared disclosure](data_handling_disclosure.md). The 11 September local audits sent no new variant requests to external annotation services.
+
 ## 9. Acknowledgement
 
 > "This work was made possible through the Hackathon, organized by Sage Bionetworks in partnership with the MVA Society, Hugging Face, and BEACON (The Benchmarking, Evaluation, and Assessment Consortium for Science), with prize sponsorship from AWS and Anthropic. We are deeply grateful to the child and their family who generously contributed their data and their story to advance research into this rare disease. We acknowledge their trust in making this Hackathon possible."
+
+
+**Challenge data:** Sage Bionetworks and partners. *Rare Disease, Real Kid: The 2026 MVA Hackathon*. Synapse project [syn76251147](https://www.synapse.org/Synapse:syn76251147/wiki/642892); controlled-access [Hugging Face dataset](https://huggingface.co/datasets/SageBio/mva-hackathon-2026-data). Accessed for this project in September 2026.

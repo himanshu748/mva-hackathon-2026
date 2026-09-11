@@ -1,0 +1,23 @@
+{
+  "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE134nnn/GSE134780/suppl/GSE134780_counts.txt.gz",
+  "downloaded_utc": "2026-09-07T19:50:26.429120+00:00",
+  "bytes": 854190,
+  "sha256": "f12a73805eb3aaf95d666e78756def647a11e95e37bd007dda580bc08ec77cba",
+  "analysis_plan_sha256_before_download": "c0fa2fd83700339f6a1d4da994303703cbf4b16537ed503ddcf46c897a84c994",
+  "response_headers": {
+    "Date": "Mon, 07 Sep 2026 19:50:24 GMT",
+    "Server": "Apache",
+    "Last-Modified": "Wed, 24 Jul 2019 15:12:07 GMT",
+    "Accept-Ranges": "bytes",
+    "Content-Length": "854190",
+    "Cache-Control": "public, max-age=86400",
+    "Expires": "Mon, 14 Sep 2026 19:50:24 GMT",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,POST,PUT,OPTIONS",
+    "Access-Control-Allow-Headers": "RANGE, Cache-control, If-None-Match, Content-Type",
+    "Access-Control-Expose-Headers": "Content-Length, Content-Range, Content-Type",
+    "Connection": "close",
+    "Content-Type": "application/x-gzip"
+  }
+}

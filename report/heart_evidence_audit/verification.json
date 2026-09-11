@@ -1,0 +1,10 @@
+{
+  "tests_passed": 5,
+  "repeat_outputs_identical": true,
+  "output_hashes": {
+    "panel_results.csv": "120c073c919f33931db951bc231a72318d051b8e9ee529799c68d1d6536b03fc",
+    "cross_tissue_directions.csv": "6af0b53df84b4df7cbbf688cee8a631bfd0511ec165c5aea79ae7919f6057ddd",
+    "summary.json": "671ad232821f1c011d46b8d07e2f2869923ac585c3865aa4a349d4c927bcece7"
+  },
+  "validation_scope": "Integrity and reproducibility of summary-table audit, not independent differential-expression validation"
+}

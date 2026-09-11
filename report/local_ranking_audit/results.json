@@ -1,0 +1,1602 @@
+{
+  "cache_inputs": 28071,
+  "cache_batches": 141,
+  "counts": {
+    "cached_inputs": 28071,
+    "multiallelic_inputs": 70,
+    "multiple_gene_inputs": 9385
+  },
+  "baseline_exactly_reproduced": 194,
+  "branches": {
+    "original": {
+      "True": {
+        "retained": 194,
+        "bub1b_ranks": [
+          1,
+          3
+        ],
+        "top10": [
+          {
+            "rank": 1,
+            "gene": "BUB1B",
+            "score": 6.971393971295542,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 2,
+            "gene": "PEX5",
+            "score": 6.632625194827815,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 3,
+            "gene": "BUB1B",
+            "score": 6.547441683753259,
+            "consequence": [
+              "stop_gained"
+            ]
+          },
+          {
+            "rank": 4,
+            "gene": "ITGB4",
+            "score": 4.5266305298074805,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 5,
+            "gene": "SLC22A1",
+            "score": 4.5,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 6,
+            "gene": "LAMA3",
+            "score": 4.249860006020661,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 7,
+            "gene": "PIK3C2A",
+            "score": 4.197295411570707,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 8,
+            "gene": "FBXL4",
+            "score": 4.196510593640278,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 9,
+            "gene": "COL7A1",
+            "score": 4.15311593036422,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 10,
+            "gene": "ADARB1",
+            "score": 4.019530268463979,
+            "consequence": [
+              "missense_variant"
+            ]
+          }
+        ],
+        "added_gene_candidates": 0,
+        "added_details": []
+      },
+      "False": {
+        "retained": 229,
+        "bub1b_ranks": [
+          1,
+          3
+        ],
+        "top10": [
+          {
+            "rank": 1,
+            "gene": "BUB1B",
+            "score": 6.971393971295542,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 2,
+            "gene": "PEX5",
+            "score": 6.632625194827815,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 3,
+            "gene": "BUB1B",
+            "score": 6.547441683753259,
+            "consequence": [
+              "stop_gained"
+            ]
+          },
+          {
+            "rank": 4,
+            "gene": "SERPINA1",
+            "score": 5.231340095936175,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 5,
+            "gene": "SERPINA1",
+            "score": 5.057864247327246,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 6,
+            "gene": "SERPINA1",
+            "score": 4.935741206355155,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 7,
+            "gene": "SERPINA1",
+            "score": 4.929155851698118,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 8,
+            "gene": "SERPINA1",
+            "score": 4.863520667020781,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 9,
+            "gene": "SERPINA1",
+            "score": 4.863520667020781,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 10,
+            "gene": "HLA-DQA1",
+            "score": 4.754667155372826,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          }
+        ],
+        "added_gene_candidates": 0,
+        "added_details": []
+      }
+    },
+    "per_gene": {
+      "True": {
+        "retained": 214,
+        "bub1b_ranks": [
+          1,
+          3
+        ],
+        "top10": [
+          {
+            "rank": 1,
+            "gene": "BUB1B",
+            "score": 6.971393971295542,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 2,
+            "gene": "PEX5",
+            "score": 6.632625194827815,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 3,
+            "gene": "BUB1B",
+            "score": 6.547441683753259,
+            "consequence": [
+              "stop_gained"
+            ]
+          },
+          {
+            "rank": 4,
+            "gene": "CTU2",
+            "score": 5.406372395345593,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 5,
+            "gene": "LZTR1",
+            "score": 4.784511140243074,
+            "consequence": [
+              "stop_gained"
+            ]
+          },
+          {
+            "rank": 6,
+            "gene": "ITGB4",
+            "score": 4.5266305298074805,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 7,
+            "gene": "SLC22A1",
+            "score": 4.5,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 8,
+            "gene": "LAMA3",
+            "score": 4.249860006020661,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 9,
+            "gene": "PIK3C2A",
+            "score": 4.197295411570707,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 10,
+            "gene": "FBXL4",
+            "score": 4.196510593640278,
+            "consequence": [
+              "missense_variant"
+            ]
+          }
+        ],
+        "added_gene_candidates": 20,
+        "added_details": [
+          {
+            "rank": 4,
+            "gene": "CTU2",
+            "transcript": "ENST00000453996",
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ],
+            "gt": "1/1",
+            "af": null,
+            "score": 5.406372395345593,
+            "key_hash": "2ab0d8e78ad3"
+          },
+          {
+            "rank": 5,
+            "gene": "LZTR1",
+            "transcript": "ENST00000646124",
+            "consequence": [
+              "stop_gained"
+            ],
+            "gt": "0/1",
+            "af": 1.369e-06,
+            "score": 4.784511140243074,
+            "key_hash": "c0b2a7178356"
+          },
+          {
+            "rank": 12,
+            "gene": "CRELD1",
+            "transcript": "ENST00000452070",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0007956,
+            "score": 4.121963958610631,
+            "key_hash": "4feee4b4f063"
+          },
+          {
+            "rank": 21,
+            "gene": "CTSA",
+            "transcript": "ENST00000646241",
+            "consequence": [
+              "inframe_deletion"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 3.76547755498074,
+            "key_hash": "0aa2cb6ad8b2"
+          },
+          {
+            "rank": 28,
+            "gene": "GATD3",
+            "transcript": "ENST00000291577",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0,
+            "score": 3.6,
+            "key_hash": "6d510448d5c9"
+          },
+          {
+            "rank": 29,
+            "gene": "GATD3",
+            "transcript": "ENST00000644251",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 3.6,
+            "key_hash": "bbe4e4e7a216"
+          },
+          {
+            "rank": 39,
+            "gene": "CCN6",
+            "transcript": "ENST00000368666",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 4.107e-06,
+            "score": 3.2834927832229166,
+            "key_hash": "251ef5dc4fec"
+          },
+          {
+            "rank": 40,
+            "gene": "IZUMO4",
+            "transcript": "ENST00000395301",
+            "consequence": [
+              "inframe_insertion"
+            ],
+            "gt": "0/1",
+            "af": 2.054e-06,
+            "score": 3.271849890184685,
+            "key_hash": "04eed24232f1"
+          },
+          {
+            "rank": 59,
+            "gene": "IZUMO4",
+            "transcript": "ENST00000395301",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0007366,
+            "score": 2.933192071370277,
+            "key_hash": "dd03d8a8b172"
+          },
+          {
+            "rank": 62,
+            "gene": "PWP2",
+            "transcript": "ENST00000291576",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 2.9250000000000003,
+            "key_hash": "e3c7600eb34e"
+          },
+          {
+            "rank": 63,
+            "gene": "STK36",
+            "transcript": "ENST00000295709",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 1.996e-05,
+            "score": 2.903279423300137,
+            "key_hash": "a48d285140c3"
+          },
+          {
+            "rank": 67,
+            "gene": "FOXL2",
+            "transcript": "ENST00000648323",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 2.851383422072356,
+            "key_hash": "bdd3f1d7c890"
+          },
+          {
+            "rank": 74,
+            "gene": "P2RY11",
+            "transcript": "ENST00000321826",
+            "consequence": [
+              "inframe_deletion"
+            ],
+            "gt": "0/1",
+            "af": 1.574e-05,
+            "score": 2.7428241407277083,
+            "key_hash": "5389e726c086"
+          },
+          {
+            "rank": 89,
+            "gene": "TSSK6",
+            "transcript": "ENST00000585580",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 2.056e-06,
+            "score": 2.5967442224191903,
+            "key_hash": "b137858135c0"
+          },
+          {
+            "rank": 92,
+            "gene": "ARPC1B",
+            "transcript": "ENST00000646101",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001674,
+            "score": 2.5434333482897338,
+            "key_hash": "394c2f1b118d"
+          },
+          {
+            "rank": 99,
+            "gene": "MRPL2",
+            "transcript": "ENST00000388752",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 9.235e-05,
+            "score": 2.4836407750559353,
+            "key_hash": "1588b5b800a3"
+          },
+          {
+            "rank": 135,
+            "gene": "SPDEF",
+            "transcript": "ENST00000374037",
+            "consequence": [
+              "missense_variant",
+              "splice_region_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001314,
+            "score": 2.1453511586940595,
+            "key_hash": "f74e76eec0df"
+          },
+          {
+            "rank": 140,
+            "gene": "PHTF1",
+            "transcript": "ENST00000369604",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 1.305e-05,
+            "score": 2.096097372081425,
+            "key_hash": "33ea9d298b4d"
+          },
+          {
+            "rank": 166,
+            "gene": "CAMK1G",
+            "transcript": "ENST00000361322",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 3.942e-05,
+            "score": 1.976070845014144,
+            "key_hash": "e2ce467ed3ef"
+          },
+          {
+            "rank": 190,
+            "gene": "NLRP6",
+            "transcript": "ENST00000534750",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001814,
+            "score": 1.810340679318981,
+            "key_hash": "6546b4f603ad"
+          }
+        ]
+      },
+      "False": {
+        "retained": 249,
+        "bub1b_ranks": [
+          1,
+          3
+        ],
+        "top10": [
+          {
+            "rank": 1,
+            "gene": "BUB1B",
+            "score": 6.971393971295542,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 2,
+            "gene": "PEX5",
+            "score": 6.632625194827815,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 3,
+            "gene": "BUB1B",
+            "score": 6.547441683753259,
+            "consequence": [
+              "stop_gained"
+            ]
+          },
+          {
+            "rank": 4,
+            "gene": "CTU2",
+            "score": 5.406372395345593,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 5,
+            "gene": "SERPINA1",
+            "score": 5.231340095936175,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 6,
+            "gene": "SERPINA1",
+            "score": 5.057864247327246,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 7,
+            "gene": "SERPINA1",
+            "score": 4.935741206355155,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 8,
+            "gene": "SERPINA1",
+            "score": 4.929155851698118,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 9,
+            "gene": "SERPINA1",
+            "score": 4.863520667020781,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 10,
+            "gene": "SERPINA1",
+            "score": 4.863520667020781,
+            "consequence": [
+              "missense_variant"
+            ]
+          }
+        ],
+        "added_gene_candidates": 20,
+        "added_details": [
+          {
+            "rank": 4,
+            "gene": "CTU2",
+            "transcript": "ENST00000453996",
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ],
+            "gt": "1/1",
+            "af": null,
+            "score": 5.406372395345593,
+            "key_hash": "2ab0d8e78ad3"
+          },
+          {
+            "rank": 11,
+            "gene": "LZTR1",
+            "transcript": "ENST00000646124",
+            "consequence": [
+              "stop_gained"
+            ],
+            "gt": "0/1",
+            "af": 1.369e-06,
+            "score": 4.784511140243074,
+            "key_hash": "c0b2a7178356"
+          },
+          {
+            "rank": 30,
+            "gene": "CRELD1",
+            "transcript": "ENST00000452070",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0007956,
+            "score": 4.121963958610631,
+            "key_hash": "4feee4b4f063"
+          },
+          {
+            "rank": 43,
+            "gene": "CTSA",
+            "transcript": "ENST00000646241",
+            "consequence": [
+              "inframe_deletion"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 3.76547755498074,
+            "key_hash": "0aa2cb6ad8b2"
+          },
+          {
+            "rank": 50,
+            "gene": "GATD3",
+            "transcript": "ENST00000291577",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0,
+            "score": 3.6,
+            "key_hash": "6d510448d5c9"
+          },
+          {
+            "rank": 51,
+            "gene": "GATD3",
+            "transcript": "ENST00000644251",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 3.6,
+            "key_hash": "bbe4e4e7a216"
+          },
+          {
+            "rank": 61,
+            "gene": "CCN6",
+            "transcript": "ENST00000368666",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 4.107e-06,
+            "score": 3.2834927832229166,
+            "key_hash": "251ef5dc4fec"
+          },
+          {
+            "rank": 62,
+            "gene": "IZUMO4",
+            "transcript": "ENST00000395301",
+            "consequence": [
+              "inframe_insertion"
+            ],
+            "gt": "0/1",
+            "af": 2.054e-06,
+            "score": 3.271849890184685,
+            "key_hash": "04eed24232f1"
+          },
+          {
+            "rank": 86,
+            "gene": "IZUMO4",
+            "transcript": "ENST00000395301",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0007366,
+            "score": 2.933192071370277,
+            "key_hash": "dd03d8a8b172"
+          },
+          {
+            "rank": 90,
+            "gene": "PWP2",
+            "transcript": "ENST00000291576",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 2.9250000000000003,
+            "key_hash": "e3c7600eb34e"
+          },
+          {
+            "rank": 91,
+            "gene": "STK36",
+            "transcript": "ENST00000295709",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 1.996e-05,
+            "score": 2.903279423300137,
+            "key_hash": "a48d285140c3"
+          },
+          {
+            "rank": 99,
+            "gene": "FOXL2",
+            "transcript": "ENST00000648323",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 2.851383422072356,
+            "key_hash": "bdd3f1d7c890"
+          },
+          {
+            "rank": 107,
+            "gene": "P2RY11",
+            "transcript": "ENST00000321826",
+            "consequence": [
+              "inframe_deletion"
+            ],
+            "gt": "0/1",
+            "af": 1.574e-05,
+            "score": 2.7428241407277083,
+            "key_hash": "5389e726c086"
+          },
+          {
+            "rank": 123,
+            "gene": "TSSK6",
+            "transcript": "ENST00000585580",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 2.056e-06,
+            "score": 2.5967442224191903,
+            "key_hash": "b137858135c0"
+          },
+          {
+            "rank": 126,
+            "gene": "ARPC1B",
+            "transcript": "ENST00000646101",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001674,
+            "score": 2.5434333482897338,
+            "key_hash": "394c2f1b118d"
+          },
+          {
+            "rank": 133,
+            "gene": "MRPL2",
+            "transcript": "ENST00000388752",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 9.235e-05,
+            "score": 2.4836407750559353,
+            "key_hash": "1588b5b800a3"
+          },
+          {
+            "rank": 169,
+            "gene": "SPDEF",
+            "transcript": "ENST00000374037",
+            "consequence": [
+              "missense_variant",
+              "splice_region_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001314,
+            "score": 2.1453511586940595,
+            "key_hash": "f74e76eec0df"
+          },
+          {
+            "rank": 174,
+            "gene": "PHTF1",
+            "transcript": "ENST00000369604",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 1.305e-05,
+            "score": 2.096097372081425,
+            "key_hash": "33ea9d298b4d"
+          },
+          {
+            "rank": 200,
+            "gene": "CAMK1G",
+            "transcript": "ENST00000361322",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 3.942e-05,
+            "score": 1.976070845014144,
+            "key_hash": "e2ce467ed3ef"
+          },
+          {
+            "rank": 224,
+            "gene": "NLRP6",
+            "transcript": "ENST00000534750",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001814,
+            "score": 1.810340679318981,
+            "key_hash": "6546b4f603ad"
+          }
+        ]
+      }
+    },
+    "per_gene_consequence": {
+      "True": {
+        "retained": 214,
+        "bub1b_ranks": [
+          1,
+          3
+        ],
+        "top10": [
+          {
+            "rank": 1,
+            "gene": "BUB1B",
+            "score": 6.971393971295542,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 2,
+            "gene": "PEX5",
+            "score": 6.632625194827815,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 3,
+            "gene": "BUB1B",
+            "score": 6.547441683753259,
+            "consequence": [
+              "stop_gained"
+            ]
+          },
+          {
+            "rank": 4,
+            "gene": "CTU2",
+            "score": 5.406372395345593,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 5,
+            "gene": "LZTR1",
+            "score": 4.784511140243074,
+            "consequence": [
+              "stop_gained"
+            ]
+          },
+          {
+            "rank": 6,
+            "gene": "ITGB4",
+            "score": 4.5266305298074805,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 7,
+            "gene": "SLC22A1",
+            "score": 4.5,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 8,
+            "gene": "LAMA3",
+            "score": 4.249860006020661,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 9,
+            "gene": "PIK3C2A",
+            "score": 4.197295411570707,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 10,
+            "gene": "FBXL4",
+            "score": 4.196510593640278,
+            "consequence": [
+              "missense_variant"
+            ]
+          }
+        ],
+        "added_gene_candidates": 20,
+        "added_details": [
+          {
+            "rank": 4,
+            "gene": "CTU2",
+            "transcript": "ENST00000453996",
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ],
+            "gt": "1/1",
+            "af": null,
+            "score": 5.406372395345593,
+            "key_hash": "2ab0d8e78ad3"
+          },
+          {
+            "rank": 5,
+            "gene": "LZTR1",
+            "transcript": "ENST00000646124",
+            "consequence": [
+              "stop_gained"
+            ],
+            "gt": "0/1",
+            "af": 1.369e-06,
+            "score": 4.784511140243074,
+            "key_hash": "c0b2a7178356"
+          },
+          {
+            "rank": 12,
+            "gene": "CRELD1",
+            "transcript": "ENST00000452070",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0007956,
+            "score": 4.121963958610631,
+            "key_hash": "4feee4b4f063"
+          },
+          {
+            "rank": 21,
+            "gene": "CTSA",
+            "transcript": "ENST00000646241",
+            "consequence": [
+              "inframe_deletion"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 3.76547755498074,
+            "key_hash": "0aa2cb6ad8b2"
+          },
+          {
+            "rank": 28,
+            "gene": "GATD3",
+            "transcript": "ENST00000291577",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0,
+            "score": 3.6,
+            "key_hash": "6d510448d5c9"
+          },
+          {
+            "rank": 29,
+            "gene": "GATD3",
+            "transcript": "ENST00000644251",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 3.6,
+            "key_hash": "bbe4e4e7a216"
+          },
+          {
+            "rank": 39,
+            "gene": "CCN6",
+            "transcript": "ENST00000368666",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 4.107e-06,
+            "score": 3.2834927832229166,
+            "key_hash": "251ef5dc4fec"
+          },
+          {
+            "rank": 40,
+            "gene": "IZUMO4",
+            "transcript": "ENST00000395301",
+            "consequence": [
+              "inframe_insertion"
+            ],
+            "gt": "0/1",
+            "af": 2.054e-06,
+            "score": 3.271849890184685,
+            "key_hash": "04eed24232f1"
+          },
+          {
+            "rank": 59,
+            "gene": "IZUMO4",
+            "transcript": "ENST00000395301",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0007366,
+            "score": 2.933192071370277,
+            "key_hash": "dd03d8a8b172"
+          },
+          {
+            "rank": 62,
+            "gene": "PWP2",
+            "transcript": "ENST00000291576",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 2.9250000000000003,
+            "key_hash": "e3c7600eb34e"
+          },
+          {
+            "rank": 63,
+            "gene": "STK36",
+            "transcript": "ENST00000295709",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 1.996e-05,
+            "score": 2.903279423300137,
+            "key_hash": "a48d285140c3"
+          },
+          {
+            "rank": 67,
+            "gene": "FOXL2",
+            "transcript": "ENST00000648323",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 2.851383422072356,
+            "key_hash": "bdd3f1d7c890"
+          },
+          {
+            "rank": 74,
+            "gene": "P2RY11",
+            "transcript": "ENST00000321826",
+            "consequence": [
+              "inframe_deletion"
+            ],
+            "gt": "0/1",
+            "af": 1.574e-05,
+            "score": 2.7428241407277083,
+            "key_hash": "5389e726c086"
+          },
+          {
+            "rank": 89,
+            "gene": "TSSK6",
+            "transcript": "ENST00000585580",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 2.056e-06,
+            "score": 2.5967442224191903,
+            "key_hash": "b137858135c0"
+          },
+          {
+            "rank": 92,
+            "gene": "ARPC1B",
+            "transcript": "ENST00000646101",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001674,
+            "score": 2.5434333482897338,
+            "key_hash": "394c2f1b118d"
+          },
+          {
+            "rank": 99,
+            "gene": "MRPL2",
+            "transcript": "ENST00000388752",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 9.235e-05,
+            "score": 2.4836407750559353,
+            "key_hash": "1588b5b800a3"
+          },
+          {
+            "rank": 135,
+            "gene": "SPDEF",
+            "transcript": "ENST00000374037",
+            "consequence": [
+              "missense_variant",
+              "splice_region_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001314,
+            "score": 2.1453511586940595,
+            "key_hash": "f74e76eec0df"
+          },
+          {
+            "rank": 140,
+            "gene": "PHTF1",
+            "transcript": "ENST00000369604",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 1.305e-05,
+            "score": 2.096097372081425,
+            "key_hash": "33ea9d298b4d"
+          },
+          {
+            "rank": 166,
+            "gene": "CAMK1G",
+            "transcript": "ENST00000361322",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 3.942e-05,
+            "score": 1.976070845014144,
+            "key_hash": "e2ce467ed3ef"
+          },
+          {
+            "rank": 190,
+            "gene": "NLRP6",
+            "transcript": "ENST00000534750",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001814,
+            "score": 1.810340679318981,
+            "key_hash": "6546b4f603ad"
+          }
+        ]
+      },
+      "False": {
+        "retained": 249,
+        "bub1b_ranks": [
+          1,
+          3
+        ],
+        "top10": [
+          {
+            "rank": 1,
+            "gene": "BUB1B",
+            "score": 6.971393971295542,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 2,
+            "gene": "PEX5",
+            "score": 6.632625194827815,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 3,
+            "gene": "BUB1B",
+            "score": 6.547441683753259,
+            "consequence": [
+              "stop_gained"
+            ]
+          },
+          {
+            "rank": 4,
+            "gene": "CTU2",
+            "score": 5.406372395345593,
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ]
+          },
+          {
+            "rank": 5,
+            "gene": "SERPINA1",
+            "score": 5.231340095936175,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 6,
+            "gene": "SERPINA1",
+            "score": 5.057864247327246,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 7,
+            "gene": "SERPINA1",
+            "score": 4.935741206355155,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 8,
+            "gene": "SERPINA1",
+            "score": 4.929155851698118,
+            "consequence": [
+              "frameshift_variant"
+            ]
+          },
+          {
+            "rank": 9,
+            "gene": "SERPINA1",
+            "score": 4.863520667020781,
+            "consequence": [
+              "missense_variant"
+            ]
+          },
+          {
+            "rank": 10,
+            "gene": "SERPINA1",
+            "score": 4.863520667020781,
+            "consequence": [
+              "missense_variant"
+            ]
+          }
+        ],
+        "added_gene_candidates": 20,
+        "added_details": [
+          {
+            "rank": 4,
+            "gene": "CTU2",
+            "transcript": "ENST00000453996",
+            "consequence": [
+              "splice_donor_variant",
+              "splice_donor_5th_base_variant",
+              "coding_sequence_variant",
+              "intron_variant"
+            ],
+            "gt": "1/1",
+            "af": null,
+            "score": 5.406372395345593,
+            "key_hash": "2ab0d8e78ad3"
+          },
+          {
+            "rank": 11,
+            "gene": "LZTR1",
+            "transcript": "ENST00000646124",
+            "consequence": [
+              "stop_gained"
+            ],
+            "gt": "0/1",
+            "af": 1.369e-06,
+            "score": 4.784511140243074,
+            "key_hash": "c0b2a7178356"
+          },
+          {
+            "rank": 30,
+            "gene": "CRELD1",
+            "transcript": "ENST00000452070",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0007956,
+            "score": 4.121963958610631,
+            "key_hash": "4feee4b4f063"
+          },
+          {
+            "rank": 43,
+            "gene": "CTSA",
+            "transcript": "ENST00000646241",
+            "consequence": [
+              "inframe_deletion"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 3.76547755498074,
+            "key_hash": "0aa2cb6ad8b2"
+          },
+          {
+            "rank": 50,
+            "gene": "GATD3",
+            "transcript": "ENST00000291577",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0,
+            "score": 3.6,
+            "key_hash": "6d510448d5c9"
+          },
+          {
+            "rank": 51,
+            "gene": "GATD3",
+            "transcript": "ENST00000644251",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 3.6,
+            "key_hash": "bbe4e4e7a216"
+          },
+          {
+            "rank": 61,
+            "gene": "CCN6",
+            "transcript": "ENST00000368666",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 4.107e-06,
+            "score": 3.2834927832229166,
+            "key_hash": "251ef5dc4fec"
+          },
+          {
+            "rank": 62,
+            "gene": "IZUMO4",
+            "transcript": "ENST00000395301",
+            "consequence": [
+              "inframe_insertion"
+            ],
+            "gt": "0/1",
+            "af": 2.054e-06,
+            "score": 3.271849890184685,
+            "key_hash": "04eed24232f1"
+          },
+          {
+            "rank": 86,
+            "gene": "IZUMO4",
+            "transcript": "ENST00000395301",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0007366,
+            "score": 2.933192071370277,
+            "key_hash": "dd03d8a8b172"
+          },
+          {
+            "rank": 90,
+            "gene": "PWP2",
+            "transcript": "ENST00000291576",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 2.9250000000000003,
+            "key_hash": "e3c7600eb34e"
+          },
+          {
+            "rank": 91,
+            "gene": "STK36",
+            "transcript": "ENST00000295709",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 1.996e-05,
+            "score": 2.903279423300137,
+            "key_hash": "a48d285140c3"
+          },
+          {
+            "rank": 99,
+            "gene": "FOXL2",
+            "transcript": "ENST00000648323",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": null,
+            "score": 2.851383422072356,
+            "key_hash": "bdd3f1d7c890"
+          },
+          {
+            "rank": 107,
+            "gene": "P2RY11",
+            "transcript": "ENST00000321826",
+            "consequence": [
+              "inframe_deletion"
+            ],
+            "gt": "0/1",
+            "af": 1.574e-05,
+            "score": 2.7428241407277083,
+            "key_hash": "5389e726c086"
+          },
+          {
+            "rank": 123,
+            "gene": "TSSK6",
+            "transcript": "ENST00000585580",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 2.056e-06,
+            "score": 2.5967442224191903,
+            "key_hash": "b137858135c0"
+          },
+          {
+            "rank": 126,
+            "gene": "ARPC1B",
+            "transcript": "ENST00000646101",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001674,
+            "score": 2.5434333482897338,
+            "key_hash": "394c2f1b118d"
+          },
+          {
+            "rank": 133,
+            "gene": "MRPL2",
+            "transcript": "ENST00000388752",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 9.235e-05,
+            "score": 2.4836407750559353,
+            "key_hash": "1588b5b800a3"
+          },
+          {
+            "rank": 169,
+            "gene": "SPDEF",
+            "transcript": "ENST00000374037",
+            "consequence": [
+              "missense_variant",
+              "splice_region_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001314,
+            "score": 2.1453511586940595,
+            "key_hash": "f74e76eec0df"
+          },
+          {
+            "rank": 174,
+            "gene": "PHTF1",
+            "transcript": "ENST00000369604",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 1.305e-05,
+            "score": 2.096097372081425,
+            "key_hash": "33ea9d298b4d"
+          },
+          {
+            "rank": 200,
+            "gene": "CAMK1G",
+            "transcript": "ENST00000361322",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 3.942e-05,
+            "score": 1.976070845014144,
+            "key_hash": "e2ce467ed3ef"
+          },
+          {
+            "rank": 224,
+            "gene": "NLRP6",
+            "transcript": "ENST00000534750",
+            "consequence": [
+              "missense_variant"
+            ],
+            "gt": "0/1",
+            "af": 0.0001814,
+            "score": 1.810340679318981,
+            "key_hash": "6546b4f603ad"
+          }
+        ]
+      }
+    }
+  },
+  "pex5_transcript_review": [
+    {
+      "key_hash": "d7dfbdd4ca99",
+      "preferred_transcripts": [
+        {
+          "id": "ENST00000675855",
+          "mane": "NM_001351132.2",
+          "consequence": [
+            "splice_donor_variant",
+            "splice_donor_5th_base_variant",
+            "coding_sequence_variant",
+            "intron_variant"
+          ],
+          "impact": 1.0
+        }
+      ]
+    }
+  ],
+  "interpretation": "Post-hoc local method audit; not new pathogenicity evidence or independent validation."
+}

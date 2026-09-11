@@ -1,0 +1,17 @@
+{
+  "passed": 12,
+  "tests": [
+    "hand-calculated median-ratio factors, normalized counts and zero exclusion",
+    "CPM library sums and hand-calculated individual value",
+    "arithmetic group means and +1 log2 contrast formula",
+    "sample metadata aligns by exact label rather than row position",
+    "reject mismatched labels",
+    "reject duplicate labels",
+    "reject duplicate genes",
+    "reject fractional counts",
+    "reject negative counts",
+    "reject nonfinite counts",
+    "reject zero library",
+    "reject no positive-in-every-sample normalization genes"
+  ]
+}

@@ -29,3 +29,7 @@ __pycache__/
 
 # Organizer code, fetched on demand by 03_verify.sh
 scripts/_organizer_evaluation.py
+
+# Public GEO study summaries, unrelated to the challenge patient
+!report/public_mouse_audit/*.tsv
+!report/heart_evidence_audit/inputs/prior_panel_contrasts.tsv

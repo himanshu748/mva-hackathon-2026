@@ -1,0 +1,44 @@
+[
+  {
+    "gene": "PEX5",
+    "cache_transcript": "ENST00000675855.1",
+    "reference_transcript": "ENST00000675855.1",
+    "strand": "+",
+    "exon_overlap": true,
+    "cds_overlap": true,
+    "wholly_intronic": false,
+    "cached_consequence": [
+      "splice_donor_variant",
+      "splice_donor_5th_base_variant",
+      "coding_sequence_variant",
+      "intron_variant"
+    ]
+  },
+  {
+    "gene": "CTU2",
+    "cache_transcript": "ENST00000453996.7",
+    "reference_transcript": "ENST00000453996.7",
+    "strand": "+",
+    "exon_overlap": true,
+    "cds_overlap": true,
+    "wholly_intronic": false,
+    "cached_consequence": [
+      "splice_donor_variant",
+      "splice_donor_5th_base_variant",
+      "coding_sequence_variant",
+      "intron_variant"
+    ]
+  },
+  {
+    "gene": "LZTR1",
+    "cache_transcript": "ENST00000646124.2",
+    "reference_transcript": "ENST00000646124.2",
+    "strand": "+",
+    "exon_overlap": true,
+    "cds_overlap": true,
+    "wholly_intronic": false,
+    "cached_consequence": [
+      "stop_gained"
+    ]
+  }
+]

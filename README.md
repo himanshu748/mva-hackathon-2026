@@ -1,8 +1,8 @@
 # MVA Hackathon 2026
 
-This repository contains retrospective variant prioritisation for Track 1 and a preclinical dasatinib-plus-quercetin research proposal for Track 2.
+This repository contains retrospective variant prioritisation for Track 1 and a preclinical dasatinib-alone research proposal for Track 2.
 
-The original analysis checked known MVA genes before building a genome-wide ranking. The ranking is therefore an unblinded retrospective analysis. It places two BUB1B candidates first and third among 194 retained variants. The organizer's live leaderboard, checked 7 September 2026, records the original Track 1 submission at **100.0 rank points and F-max 1.000**. That score does not establish phase or functional effects.
+The original analysis checked known MVA genes before building a genome-wide ranking. The ranking is therefore an unblinded retrospective analysis. The 11 September offline audit reproduced all 194 original entries and recovered 20 additional variant–gene entries by selecting transcripts per gene; the BUB1B pair stayed at ranks 1 and 3 across six branches. It places two BUB1B candidates first and third among 194 retained variants. The organizer's live leaderboard, checked 7 September 2026, records the original Track 1 submission at **100.0 rank points and F-max 1.000**. That score does not establish phase or functional effects.
 
 | Candidate | GRCh38 | Interpretation |
 |---|---|---|
@@ -18,12 +18,15 @@ Both variants are heterozygous. Their trans configuration remains unproven. Both
 - [Research comparison plan](report/research_plan.md)
 - [Source-linked evidence ledger](report/evidence_ledger.json)
 - [Rules audit](report/rules_audit.md)
-- [Silent pitch video](https://youtu.be/s92NWCo-Kzw)
+- Current silent pitch: upload verification pending; the historical video is superseded.
+- [Offline transcript-selection audit](report/local_ranking_audit/README.md)
+- [Public mouse-data audit](report/public_mouse_audit/findings.md)
+- [Public heart-data audit](report/heart_evidence_audit/README.md)
 - [Pitch script](report/track2_pitch_script.md)
 - [AI and external-service disclosure](report/data_handling_disclosure.md)
 - [Sensitivity results](report/sensitivity_summary.json)
 
-Track 2 proposes testing selective senescent-cell clearance. Genetic mouse experiments and small adult drug studies motivate the work. They do not establish safety or efficacy in this child. No pediatric treatment schedule is proposed. The proposal also addresses a randomized trial with a negative primary endpoint and 2026 myelination-harm findings; the comparison plan measures healthy tissue function separately from cell survival.
+Track 2 nominates dasatinib alone for testing selective senescent-cell clearance. Quercetin and D+Q are indirect background evidence, not nominated candidates. Genetic mouse experiments and small adult drug studies motivate the work. They do not establish safety or efficacy in this child. No pediatric treatment schedule is proposed. The proposal also addresses a randomized trial with a negative primary endpoint and 2026 myelination-harm findings; the comparison plan measures healthy tissue function separately from cell survival.
 
 ## Reproduction
 
@@ -52,7 +55,7 @@ Reference sources and API outputs can change. Local manifests record hashes; the
 
 ## Limits
 
-The coding-region filter excludes most noncoding variation. Structural and copy-number variants are not assessed. Gene exclusions are heuristics that can remove real findings. The PEX5 candidate at rank two has conflicting transcript/consequence evidence and requires review. Allele-depth exploration does not establish a mosaic fraction. The secondary-variant lookup is incomplete and does not establish a negative clinical secondary-findings result.
+The coding-region filter excludes most noncoding variation. Structural and copy-number variants are not assessed. Gene exclusions are heuristics that can remove real findings. The PEX5 and CTU2 deletion representations have exon-overlap versus intronic-HGVS differences that remain unresolved. CTU2 and LZTR1 are review candidates, not additional diagnoses. Allele-depth exploration does not establish a mosaic fraction. The secondary-variant lookup is incomplete and does not establish a negative clinical secondary-findings result.
 
 The gated data, intermediate tables, and annotation cache must not be committed or redistributed. Dataset handling and AI use are described in the linked disclosure. Tool outputs containing candidate and phenotype information were available to AI assistants; the earlier statement that no data reached a commercial AI provider has been withdrawn.
 
@@ -61,3 +64,14 @@ The gated data, intermediate tables, and annotation cache must not be committed 
 > This work was made possible through the Hackathon, organized by Sage Bionetworks in partnership with the MVA Society, Hugging Face, and BEACON (The Benchmarking, Evaluation, and Assessment Consortium for Science), with prize sponsorship from AWS and Anthropic. We are deeply grateful to the child and their family who generously contributed their data and their story to advance research into this rare disease. We acknowledge their trust in making this Hackathon possible.
 
 Submissions and results are released under CC BY 4.0.
+
+
+## Additional audit reproduction
+
+Run the offline transcript-selection audit against the existing complete private checkout:
+
+```bash
+python3 report/local_ranking_audit/audit.py --root .
+```
+
+Public mouse and heart audit inputs come from unrelated public GEO studies; they contain no challenge patient data. Their companion reports describe reproduction and limits. Challenge-derived raw/intermediate files remain excluded from Git. The legacy ranker is preserved to reproduce the original submission; the alternative method is explicit in the separate audit.

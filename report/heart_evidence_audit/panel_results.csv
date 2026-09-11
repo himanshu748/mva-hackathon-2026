@@ -1,0 +1,8 @@
+gene,reported,author_log2FC,author_pvalue,author_padj,author_padj_below_005,direction,interpretation
+Cdkn2a,True,1.43260719820846,0.00125706810860777,0.0460080169319752,True,higher,Published summary estimate; not independently refitted
+Cdkn1a,True,1.8229732986325,9.97832575963624e-13,7.80775317341652e-11,True,higher,Published summary estimate; not independently refitted
+Serpine1,True,0.821643981760787,0.0417472354343104,0.402182933197954,False,higher,Published summary estimate; not independently refitted
+Igfbp2,True,3.16445028397526,4.48581096983434e-08,3.06906112333138e-06,True,higher,Published summary estimate; not independently refitted
+Il6,True,0.821407134979164,0.0574771122388834,0.464290483346004,False,higher,Published summary estimate; not independently refitted
+Ccl2,True,0.94857126304975,0.0283804100636453,0.331979207092725,False,higher,Published summary estimate; not independently refitted
+Mmp3,True,1.33343015768974,0.0349831076717833,0.366088988663314,False,higher,Published summary estimate; not independently refitted

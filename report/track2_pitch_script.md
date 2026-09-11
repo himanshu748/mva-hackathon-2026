@@ -1,35 +1,37 @@
-# Track 2 pitch: silent final cut and optional narration
+# Silent pitch text
 
-Revision 2, 7 September 2026. The final cut is silent at the participant's request. Nine slides are held for 12, 18, 15, 16, 18, 20, 22, 16 and 24 seconds (161 seconds total). The final slide displays the full acknowledgement. The text below is optional narration retained as an explanatory script; it is not spoken in the submitted cut. Research proposal; no clinical regimen.
+## Slide 1 (11 seconds)
 
-## Slide 1
+ MVA Hackathon 2026 · Track 2  Can selective cell clearance  preserve tissue function?   Dasatinib alone: an approved-drug research candidate. A preclinical proposal for BUB1B-related MVA.  Himanshu Kumar · Research update, 11 September 2026 
 
-Our proposal concerns a child with mosaic variegated aneuploidy and a family who shared their data for research. We identified two candidate variants in bub one bee. We propose testing whether selective removal of senescent cells can improve tissue function without adding harm.
+## Slide 2 (19 seconds)
 
-## Slide 2
+ Genetic foundation  Two BUB1B candidates. Biological effects still need testing.    p.Leu737Ter  Predicted loss of function    p.Asn1002Lys  Functional effect unmeasured    Track 1 score  100 / 100 F-max 1.000    Known genes were checked first. Phase is unproven. 162 sensitivity settings assess stability within this case. 
 
-The original analysis checked known disease genes first. A later genome wide ranking placed both candidates in the top three. Track one received one hundred rank points. The stop variant predicts loss of function. The missense variant needs functional testing, and their phase remains unknown.
+## Slide 3 (20 seconds)
 
-## Slide 3
+ Existing evidence, precise scope  A cell-specific drug signal.  A separate genetic precedent.     Dasatinib alone:  senescent human fat-progenitor activity.   Genetic clearance:  selected benefits in BubR1 mice.   Missing evidence:  dasatinib-only MVA functional benefit.   Zhu 2015, Fig. 2A · Baker 2011 Different models and interventions. Neither establishes benefit for this child. 
 
-Both candidates stayed in the top three across one hundred and sixty two scoring and gene exclusion settings. This supports stability within this case. It is not independent validation. Our next question is whether the proposed drug combination deserves further investigation.
+## Slide 4 (23 seconds)
 
-## Slide 4
+ Our completed public-data audit  23 mouse samples. Seven markers, mixed directions.    Mutant groups versus WT  Muscle  Adipose    Cdkn2a  Higher*  Higher    Cdkn1a  Higher  Lower    Serpine1  Lower  Lower    All 7 genes / 42 contrasts supplied; 23/42 directions stable to every omission. *WT muscle counts are sparse; Cdkn2a is not p16-specific. Exploratory GSE134780 reanalysis. No drug arms or patient-response evidence. 
 
-Bub are one helps the spindle assembly checkpoint restrain chromosome separation. Its dysfunction can cause errors in chromosome separation. Our therapeutic hypothesis concerns a possible downstream consequence: persistent senescent cells and their inflammatory signals. Whether this patient has a harmful senescent cell burden still needs measurement.
+## Slide 5 (20 seconds)
 
-## Slide 5
+ D+Q background: mixed human evidence    Bone trial · 2024  Primary endpoint not met  60 women · P=.611 Open-label, no-treatment control    MASH trial · 2026  Histologic endpoint 8/17 vs 1/14  31 adults · reported P=.041 Double-blind placebo comparison    Combination results cannot establish dasatinib-alone benefit. The MASH finding is a congress abstract.  Farr 2024 · Koning et al., EASL 2026, LBO-005-YI Quercetin is not a nominated candidate in this proposal. 
 
-The strongest supporting experiment is a mouse study. Genetic removal of senescent cells delayed selected aging related problems in bub are one deficient mice. That establishes a mechanism worth testing. It does not establish that drugs reproduce the result, or that the result transfers to this child.
+## Slide 6 (19 seconds)
 
-## Slide 6
+ Viability is not enough  Myelin dysfunction occurred  without detected cell death.   Mouse/culture evidence includes intermittent exposure and effects from individual components.    Measure  Neural differentiation and function    Verify  Feasible exposure and formulation    Lombardo 2026 · FDA label · No human risk estimate from these models 
 
-We propose testing dasatinib and quercetin to remove senescent cells. Adult studies provide early evidence, but a randomized bone study missed its primary endpoint. Dasatinib has specific pediatric leukemia approvals. Neither those approvals nor the adult studies establish safety or efficacy in this disease.
+## Slide 7 (20 seconds)
 
-## Slide 7
+ The next decisive comparison  Vehicle versus dasatinib alone    Target:  is persistent senescence present in the model?   Cell fate:  distinguish clearance from cell preservation.   Function:  measure total tissue output after washout.   Mechanism:  track checkpoint activity and chromosome errors.   Use correction controls and an orthogonal clearance comparison where feasible. All biological experiments are proposed work. 
 
-A twenty twenty six study found myelin damage in mice without obvious cell death. That changes our test plan. We would compare each drug and the combination, measuring tissue function and neural differentiation as well as selective killing. We must also check whether surviving cells become more unstable.
+## Slide 8 (19 seconds)
 
-## Slide 8
+ A comparison if protein stress is present  Could preserving cells  improve tissue function?   Sodium phenylbutyrate reduced aggregates and apoptosis during induction of human trisomic neurons.  Mature-neuron recovery untested. Metabolite neurotoxicity warning. Advance only with net function and a defensible exposure window.  Hirata 2020 · PHEBURANE label, July 2026 Conditional comparison; no MVA benefit shown. Lab access and funding unsecured. 
 
-We would stop if target burden is absent, healthy tissue function worsens, or chromosome instability increases. The combination must offer an advantage over its components. This is a preclinical proposal with open methods and explicit failure criteria. Thank you to the child, family, and organizers.
+## Slide 9 (26 seconds)
+
+ Acknowledgement  This work was made possible through the Hackathon, organized by Sage Bionetworks in partnership with the MVA Society, Hugging Face, and BEACON (The Benchmarking, Evaluation, and Assessment Consortium for Science), with prize sponsorship from AWS and Anthropic. We are deeply grateful to the child and their family who generously contributed their data and their story to advance research into this rare disease. We acknowledge their trust in making this Hackathon possible.  Research proposal · No new biological experiment or clinical benefit demonstrated 

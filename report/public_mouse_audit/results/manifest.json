@@ -1,0 +1,91 @@
+{
+  "dataset": "GSE134780",
+  "analysis": "literature-informed exploratory descriptive public mouse audit",
+  "no_p_values": true,
+  "panel": [
+    "Cdkn2a",
+    "Cdkn1a",
+    "Serpine1",
+    "Igfbp2",
+    "Il6",
+    "Ccl2",
+    "Mmp3"
+  ],
+  "contrasts": [
+    [
+      "HH",
+      "WT"
+    ],
+    [
+      "HL1002P",
+      "WT"
+    ],
+    [
+      "HL1002P",
+      "HH"
+    ]
+  ],
+  "tissues_normalized_separately": true,
+  "normalization": "unrescaled median ratios; geometric means of genes positive in all included tissue samples",
+  "log2_formula": "log2((arithmetic numerator group mean + 1)/(arithmetic denominator group mean + 1))",
+  "secondary_normalization": "CPM using all-feature library totals, +1 CPM pseudocount",
+  "zero_direction_tolerance": 1e-12,
+  "low_count_flag": "tissue mean raw count < 10; not excluded",
+  "loo_scope": "each sample of a tissue omitted in turn; size factors recomputed on all remaining genes/samples",
+  "input_download_receipt": {
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE134nnn/GSE134780/suppl/GSE134780_counts.txt.gz",
+    "downloaded_utc": "2026-09-07T19:50:26.429120+00:00",
+    "bytes": 854190,
+    "sha256": "f12a73805eb3aaf95d666e78756def647a11e95e37bd007dda580bc08ec77cba",
+    "analysis_plan_sha256_before_download": "c0fa2fd83700339f6a1d4da994303703cbf4b16537ed503ddcf46c897a84c994",
+    "response_headers": {
+      "Date": "Mon, 07 Sep 2026 19:50:24 GMT",
+      "Server": "Apache",
+      "Last-Modified": "Wed, 24 Jul 2019 15:12:07 GMT",
+      "Accept-Ranges": "bytes",
+      "Content-Length": "854190",
+      "Cache-Control": "public, max-age=86400",
+      "Expires": "Mon, 14 Sep 2026 19:50:24 GMT",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,PUT,OPTIONS",
+      "Access-Control-Allow-Headers": "RANGE, Cache-control, If-None-Match, Content-Type",
+      "Access-Control-Expose-Headers": "Content-Length, Content-Range, Content-Type",
+      "Connection": "close",
+      "Content-Type": "application/x-gzip"
+    }
+  },
+  "inputs": {
+    "GSE134780_counts.txt.gz": "f12a73805eb3aaf95d666e78756def647a11e95e37bd007dda580bc08ec77cba",
+    "samples.tsv": "8c2ec451760a4b733c4e624fe8d640b6badec6dd0f79c468828749d75012d1c6",
+    "analysis_plan.md": "c0fa2fd83700339f6a1d4da994303703cbf4b16537ed503ddcf46c897a84c994",
+    "count_download_receipt.json": "0c2d8edb818d85019fdf86e88b431fa9a36a2fa93bc43d0fdbe855147d268d2b"
+  },
+  "script_sha256": "7aac210899641abdee429b44713c3ed15cfac78c90c44f2bdce4910821fe50d2",
+  "python_version": "3.12.14",
+  "numpy_version": "2.3.5",
+  "integrity": {
+    "gene_rows": 24062,
+    "samples": 23,
+    "unique_gene_ids": true,
+    "unique_sample_labels": true,
+    "integer_nonnegative_finite_counts": true,
+    "exact_metadata_label_match": true,
+    "expected_group_n_match": true
+  },
+  "row_counts": {
+    "panel_contrasts.tsv": 42,
+    "panel_sample_expression.tsv": 161,
+    "sample_qc.tsv": 23,
+    "normalization_qc.tsv": 2,
+    "leave_one_out.tsv": 483
+  },
+  "output_sha256": {
+    "panel_contrasts.tsv": "2861b28e7f2d03cf463db592e97aba114afd8599a42a9641df7dc49062ee9b32",
+    "panel_sample_expression.tsv": "dbcb838c7246045dd2a28ca3f7792c0a571d9932644e59a6e0bce6dd4be795a2",
+    "sample_qc.tsv": "638714638f34add59dc166326f5337c2b182d7b8c4bb7b6c56c85850057ea8c2",
+    "normalization_qc.tsv": "90b3b5b4e2ab187e18f2e80cb708596b48d2d9cc3ac76455b240b24a6ef17177",
+    "leave_one_out.tsv": "dfe7454d16a19020a79bf20be638222550e1ec9b73f65dc0ef9dd02df15fa016",
+    "test_results.json": "2bb6b6a56ce3baa5ccb8fa901798a82d7504bc80ec91bfe7685f01b02eddf1ec"
+  }
+}
